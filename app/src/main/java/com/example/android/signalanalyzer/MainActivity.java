@@ -140,7 +140,7 @@ private LineGraphSeries<DataPoint> series1;
                     });
 //                    sleep to slow down the addition of the entries
                     try {
-                        Thread.sleep(1000);
+                        Thread.sleep(2000);
                     } catch (InterruptedException e) {
 
                     }
