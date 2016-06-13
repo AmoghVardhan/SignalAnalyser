@@ -218,9 +218,8 @@ int lastX1 = lastX-1;
 
             case R.id.spinner2:
                 b= adapterView.getItemIdAtPosition(i);
-                Toast.makeText(this, "a=" + i, Toast.LENGTH_SHORT).show();
-                Toast.makeText(this, "b=" + i, Toast.LENGTH_SHORT).show();
-
+//                Toast.makeText(this, "a=" + i, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "b=" + i, Toast.LENGTH_SHORT).show();
 
                 break;
 
