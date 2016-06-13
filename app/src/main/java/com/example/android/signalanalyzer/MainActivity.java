@@ -39,6 +39,7 @@ import java.util.concurrent.RunnableFuture;
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private static final Random RANDOM = new Random();
 private LineGraphSeries<DataPoint> series1;
+    private LineGraphSeries<DataPoint>series2;
     public int lastX = 0;
     public long a ,b ;
     @Override
@@ -63,6 +64,9 @@ private LineGraphSeries<DataPoint> series1;
         gridLabel.setNumHorizontalLabels(5);
         gridLabel.setNumVerticalLabels(11);
         series1.setColor(Color.RED);
+        series2 = new LineGraphSeries<>();
+        graph.addSeries(series2);
+        series2.setColor(Color.BLACK);
 
       Spinner spinner = (Spinner) findViewById(R.id.spinner);
 // Create an ArrayAdapter using the string array and a default spinner layout
@@ -116,6 +120,7 @@ private LineGraphSeries<DataPoint> series1;
         spinner6.setAdapter(adapter6);
         spinner6.setSelection(2);
 //        spinner6.setOnItemSelectedListener(this);
+
 
     }
     @Override
@@ -174,6 +179,11 @@ private LineGraphSeries<DataPoint> series1;
         int rssi = wifiManager.getConnectionInfo().getRssi();
 
         series1.appendData(new DataPoint(lastX++, rssi),true, 10);
+int lastX1 = lastX-1;
+        Random r = new Random();
+        int i1 = r.nextInt(-60-(-70)) + (-70);
+        series2.appendData(new DataPoint(lastX1++,i1),true,10);
+
         if (wifiManager.isWifiEnabled() == false)
         {
             // If wifi disabled then enable it
