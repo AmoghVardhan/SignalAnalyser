@@ -38,10 +38,12 @@ import java.util.concurrent.RunnableFuture;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private static final Random RANDOM = new Random();
+    private LineGraphSeries<DataPoint> series;
 private LineGraphSeries<DataPoint> series1;
     private LineGraphSeries<DataPoint>series2;
+
     public int lastX = 0;
-    public long a ,b ;
+    public long a, b , c , d, e, f ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +51,7 @@ private LineGraphSeries<DataPoint> series1;
 //        creating a graph instance
         GraphView graph = (GraphView)findViewById(R.id.graph);
 //        data
+        series = new LineGraphSeries<>();
         series1 = new LineGraphSeries<>();
         graph.addSeries(series1);
 //        customization of our graph
@@ -66,7 +69,16 @@ private LineGraphSeries<DataPoint> series1;
         series1.setColor(Color.RED);
         series2 = new LineGraphSeries<>();
         graph.addSeries(series2);
-        series2.setColor(Color.BLACK);
+        series2.setColor(Color.BLUE);
+        Paint paint = new Paint();
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(10);
+        paint.setColor(Color.BLUE);
+        paint.setPathEffect(new DashPathEffect(new float[]{8, 5}, 0));
+        series.setCustomPaint(paint);
+        series2.setCustomPaint(paint);
+
+
 
       Spinner spinner = (Spinner) findViewById(R.id.spinner);
 // Create an ArrayAdapter using the string array and a default spinner layout
@@ -92,7 +104,7 @@ private LineGraphSeries<DataPoint> series1;
         adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner3.setAdapter(adapter3);
         spinner3.setSelection(1);
-//        spinner3.setOnItemSelectedListener(this);
+        spinner3.setOnItemSelectedListener(this);
 
 
         Spinner spinner4 = (Spinner) findViewById(R.id.spinner4);
@@ -101,7 +113,7 @@ private LineGraphSeries<DataPoint> series1;
         adapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner4.setAdapter(adapter4);
         spinner4.setSelection(1);
-//        spinner4.setOnItemSelectedListener(this);
+        spinner4.setOnItemSelectedListener(this);
 
 
         Spinner spinner5 = (Spinner) findViewById(R.id.spinner5);
@@ -220,8 +232,17 @@ int lastX1 = lastX-1;
                 b= adapterView.getItemIdAtPosition(i);
 //                Toast.makeText(this, "a=" + i, Toast.LENGTH_SHORT).show();
 //                Toast.makeText(this, "b=" + i, Toast.LENGTH_SHORT).show();
-
                 break;
+            case R.id.spinner3:
+//                Toast.makeText(this,"entered", Toast.LENGTH_SHORT).show();
+                c = adapterView.getItemIdAtPosition(i);
+//                Toast.makeText(this,"c = "+c, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.spinner4:
+                d = adapterView.getItemIdAtPosition(i);
+//                Toast.makeText(this, "d = "+d, Toast.LENGTH_SHORT).show();
+                break;
+
 
 
         }
@@ -232,9 +253,13 @@ int lastX1 = lastX-1;
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
-   public void bWifi(View view)
-    {
+   public void bWifi(View view) {
 
+       series = series1;
+       setStyle(view);
+   }
+       public void setStyle(View view)
+    {
         if(a==0 && b==0)
         {
             Paint paint = new Paint();
@@ -242,7 +267,7 @@ int lastX1 = lastX-1;
             paint.setStrokeWidth(10);
             paint.setColor(Color.RED);
             paint.setPathEffect(new CornerPathEffect(10));
-            series1.setCustomPaint(paint);
+            series.setCustomPaint(paint);
         }
         if(a==0 && b==1)
         {
@@ -251,7 +276,7 @@ int lastX1 = lastX-1;
             paint.setStrokeWidth(10);
             paint.setColor(Color.RED);
             paint.setPathEffect(new DashPathEffect(new float[]{8, 5}, 0));
-            series1.setCustomPaint(paint);
+            series.setCustomPaint(paint);
         }
         if(a==0 && b==2)
         {
@@ -261,7 +286,7 @@ int lastX1 = lastX-1;
             paint.setColor(Color.RED);
 
             paint.setPathEffect(new CornerPathEffect(10));
-            series1.setCustomPaint(paint);
+            series.setCustomPaint(paint);
         }
 
         if(a==1 && b==0)
@@ -271,7 +296,7 @@ int lastX1 = lastX-1;
             paint.setStrokeWidth(10);
             paint.setColor(Color.BLUE);
             paint.setPathEffect(new CornerPathEffect(10));
-            series1.setCustomPaint(paint);
+            series.setCustomPaint(paint);
         }
         if(a==1 && b==1)
         {
@@ -280,7 +305,7 @@ int lastX1 = lastX-1;
             paint.setStrokeWidth(10);
             paint.setColor(Color.BLUE);
             paint.setPathEffect(new DashPathEffect(new float[]{8, 5}, 0));
-            series1.setCustomPaint(paint);
+            series.setCustomPaint(paint);
 
         }
         if(a==1 && b==2)
@@ -290,7 +315,7 @@ int lastX1 = lastX-1;
             paint.setStrokeWidth(30);
             paint.setColor(Color.BLUE);
             paint.setPathEffect(new CornerPathEffect(10));
-            series1.setCustomPaint(paint);
+            series.setCustomPaint(paint);
 
         }
         if(a==2 && b==0)
@@ -300,7 +325,7 @@ int lastX1 = lastX-1;
             paint.setStrokeWidth(10);
             paint.setColor(Color.YELLOW);
             paint.setPathEffect(new CornerPathEffect(10));
-            series1.setCustomPaint(paint);
+            series.setCustomPaint(paint);
 
         }
         if(a==2 && b==1)
@@ -310,7 +335,7 @@ int lastX1 = lastX-1;
             paint.setStrokeWidth(10);
             paint.setColor(Color.YELLOW);
             paint.setPathEffect(new DashPathEffect(new float[]{8, 5}, 0));
-            series1.setCustomPaint(paint);
+            series.setCustomPaint(paint);
 
         }
         if(a==2 && b==2)
@@ -320,9 +345,22 @@ int lastX1 = lastX-1;
             paint.setStrokeWidth(30);
             paint.setColor(Color.YELLOW);
             paint.setPathEffect(new CornerPathEffect(10));
-            series1.setCustomPaint(paint);
+            series.setCustomPaint(paint);
 
         }
+
+    }
+
+    public void bUSB(View view){
+        series = series2;
+        a=c;
+        b=d;
+//Toast.makeText(this,"c = "+c + "d = "+d, Toast.LENGTH_SHORT).show();
+        setStyle(view);
+
+
+    }
+    public void bBluetooth(View view){
 
     }
 }
