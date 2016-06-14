@@ -44,7 +44,7 @@ private LineGraphSeries<DataPoint> series1;
     private LineGraphSeries<DataPoint>series3;
 
     public int lastX = 0;
-    public long a, b , c , d, e, f ;
+    public long a, b , c , d, e, f, g, h ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -236,12 +236,12 @@ int lastX1 = lastX-1;
         switch (adapterView.getId()) {
             case R.id.spinner:
 
-                a = adapterView.getItemIdAtPosition(i);
+                g = adapterView.getItemIdAtPosition(i);
 
                 break;
 
             case R.id.spinner2:
-                b= adapterView.getItemIdAtPosition(i);
+                h= adapterView.getItemIdAtPosition(i);
 //                Toast.makeText(this, "a=" + i, Toast.LENGTH_SHORT).show();
 //                Toast.makeText(this, "b=" + i, Toast.LENGTH_SHORT).show();
                 break;
@@ -271,7 +271,8 @@ int lastX1 = lastX-1;
 
     }
    public void bWifi(View view) {
-
+        a = g;
+       b= h;
        series = series1;
        setStyle(view);
    }
