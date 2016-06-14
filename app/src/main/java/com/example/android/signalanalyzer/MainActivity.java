@@ -82,7 +82,7 @@ private LineGraphSeries<DataPoint> series1;
         graph.addSeries(series3);
         Paint paint1 = new Paint();
         paint1.setStyle(Paint.Style.STROKE);
-        paint1.setStrokeWidth(30);
+        paint1.setStrokeWidth(20);
         paint1.setColor(Color.YELLOW);
         paint1.setPathEffect(new CornerPathEffect(10));
         series3.setCustomPaint(paint1);
@@ -299,7 +299,7 @@ int lastX1 = lastX-1;
         {
             Paint paint = new Paint();
             paint.setStyle(Paint.Style.STROKE);
-            paint.setStrokeWidth(30);
+            paint.setStrokeWidth(20);
             paint.setColor(Color.RED);
 
             paint.setPathEffect(new CornerPathEffect(10));
@@ -329,7 +329,7 @@ int lastX1 = lastX-1;
         {
             Paint paint = new Paint();
             paint.setStyle(Paint.Style.STROKE);
-            paint.setStrokeWidth(30);
+            paint.setStrokeWidth(20);
             paint.setColor(Color.BLUE);
             paint.setPathEffect(new CornerPathEffect(10));
             series.setCustomPaint(paint);
@@ -359,7 +359,7 @@ int lastX1 = lastX-1;
         {
             Paint paint = new Paint();
             paint.setStyle(Paint.Style.STROKE);
-            paint.setStrokeWidth(30);
+            paint.setStrokeWidth(20);
             paint.setColor(Color.YELLOW);
             paint.setPathEffect(new CornerPathEffect(10));
             series.setCustomPaint(paint);
