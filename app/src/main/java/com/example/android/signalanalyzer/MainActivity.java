@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private LineGraphSeries<DataPoint> series;
 private LineGraphSeries<DataPoint> series1;
     private LineGraphSeries<DataPoint>series2;
+    private LineGraphSeries<DataPoint>series3;
 
     public int lastX = 0;
     public long a, b , c , d, e, f ;
@@ -75,9 +76,16 @@ private LineGraphSeries<DataPoint> series1;
         paint.setStrokeWidth(10);
         paint.setColor(Color.BLUE);
         paint.setPathEffect(new DashPathEffect(new float[]{8, 5}, 0));
-        series.setCustomPaint(paint);
+//        series.setCustomPaint(paint);
         series2.setCustomPaint(paint);
-
+        series3 = new LineGraphSeries<>();
+        graph.addSeries(series3);
+        Paint paint1 = new Paint();
+        paint1.setStyle(Paint.Style.STROKE);
+        paint1.setStrokeWidth(30);
+        paint1.setColor(Color.YELLOW);
+        paint1.setPathEffect(new CornerPathEffect(10));
+        series3.setCustomPaint(paint1);
 
 
       Spinner spinner = (Spinner) findViewById(R.id.spinner);
@@ -122,7 +130,7 @@ private LineGraphSeries<DataPoint> series1;
         adapter5.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner5.setAdapter(adapter5);
         spinner5.setSelection(2);
-//        spinner5.setOnItemSelectedListener(this);
+        spinner5.setOnItemSelectedListener(this);
 
 
         Spinner spinner6 = (Spinner) findViewById(R.id.spinner6);
@@ -131,7 +139,7 @@ private LineGraphSeries<DataPoint> series1;
         adapter6.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner6.setAdapter(adapter6);
         spinner6.setSelection(2);
-//        spinner6.setOnItemSelectedListener(this);
+        spinner6.setOnItemSelectedListener(this);
 
 
     }
@@ -195,6 +203,10 @@ int lastX1 = lastX-1;
         Random r = new Random();
         int i1 = r.nextInt(-60-(-70)) + (-70);
         series2.appendData(new DataPoint(lastX1++,i1),true,10);
+        int lastX2 = lastX1-1;
+        Random r1 = new Random();
+        int i2 = r1.nextInt(-50-(-60)) + (-60);
+        series3.appendData(new DataPoint(lastX2++,i2),true,10);
 
         if (wifiManager.isWifiEnabled() == false)
         {
@@ -242,7 +254,12 @@ int lastX1 = lastX-1;
                 d = adapterView.getItemIdAtPosition(i);
 //                Toast.makeText(this, "d = "+d, Toast.LENGTH_SHORT).show();
                 break;
-
+            case R.id.spinner5:
+                e = adapterView.getItemIdAtPosition(i);
+                break;
+            case R.id.spinner6:
+                f = adapterView.getItemIdAtPosition(i);
+                break;
 
 
         }
@@ -361,6 +378,9 @@ int lastX1 = lastX-1;
 
     }
     public void bBluetooth(View view){
-
+        series = series3;
+        a=e;
+        b=f;
+        setStyle(view);
     }
 }
