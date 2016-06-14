@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Signal Analyzer</string>
+    <string name="title_activity_personalization">MainActivity</string>
+    <string-array name="color_choice">
+        <item>Red</item>
+        <item>Blue</item>
+        <item>Yellow</item>
+    </string-array>
+    <string-array name="style_choice">
+        <item>continuous</item>
+        <item>dashed</item>
+        <item>thick</item>
+    </string-array>
+</resources>
