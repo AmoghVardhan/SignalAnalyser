@@ -1,10 +1,12 @@
 package com.example.android.signalanalyzer;
 
+import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.BlurMaskFilter;
 import android.graphics.Color;
 import android.graphics.CornerPathEffect;
@@ -24,6 +26,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jjoe64.graphview.GraphView;
@@ -39,18 +42,20 @@ import java.util.concurrent.RunnableFuture;
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private static final Random RANDOM = new Random();
     private LineGraphSeries<DataPoint> series;
-private LineGraphSeries<DataPoint> series1;
-    private LineGraphSeries<DataPoint>series2;
-    private LineGraphSeries<DataPoint>series3;
-
+    private LineGraphSeries<DataPoint> series1;
+    private LineGraphSeries<DataPoint> series2;
+    private LineGraphSeries<DataPoint> series3;
+    private BluetoothAdapter BTAdapter = BluetoothAdapter.getDefaultAdapter();
     public int lastX = 0;
-    public long a, b , c , d, e, f, g, h ;
+    public long a, b, c, d, e, f, g, h;
+    public int rssi2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 //        creating a graph instance
-        GraphView graph = (GraphView)findViewById(R.id.graph);
+        GraphView graph = (GraphView) findViewById(R.id.graph);
 //        data
         series = new LineGraphSeries<>();
         series1 = new LineGraphSeries<>();
@@ -88,7 +93,7 @@ private LineGraphSeries<DataPoint> series1;
         series3.setCustomPaint(paint1);
 
 
-      Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
 // Create an ArrayAdapter using the string array and a default spinner layout
         final ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.color_choice, android.R.layout.simple_spinner_item);
@@ -141,17 +146,17 @@ private LineGraphSeries<DataPoint> series1;
         spinner6.setSelection(2);
         spinner6.setOnItemSelectedListener(this);
 
-
     }
+
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
         // we're going to simulate real time with thread that append data to the graph
         new Thread(new Runnable() {
             @Override
             public void run() {
 //we add 100 new entries
-                for(int i = 0; i<100 ; i++){
+                for (int i = 0; i < 100; i++) {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -168,6 +173,7 @@ private LineGraphSeries<DataPoint> series1;
             }
         }).start();
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -193,29 +199,52 @@ private LineGraphSeries<DataPoint> series1;
     }
 
     //    add random data
-    private void addEntry(){
+    private void addEntry() {
+
 //        here we choose a max of 10 points to show up on the Viewport
-        WifiManager wifiManager = (WifiManager)getSystemService(Context.WIFI_SERVICE);
+        WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
         int rssi = wifiManager.getConnectionInfo().getRssi();
 
-        series1.appendData(new DataPoint(lastX++, rssi),true, 10);
-int lastX1 = lastX-1;
+        series1.appendData(new DataPoint(lastX++, rssi), true, 10);
+        final BroadcastReceiver receiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                String action = intent.getAction();
+                if(BluetoothDevice.ACTION_FOUND.equals(action));
+              int  rsssi2 = intent.getShortExtra(BluetoothDevice.EXTRA_RSSI,Short.MAX_VALUE);
+                rssi2 = rsssi2;
+//                String name = intent.getStringExtra(BluetoothDevice.EXTRA_NAME);
+//            TextView rssi_msg = (TextView)findViewById(R.id.textView);
+//            rssi_msg.setText(rssi_msg.getText() + name + "=>" + rsssi2 +"dbm\n");
+            }
+        };
+        int lastX1 = lastX - 1;
         Random r = new Random();
-        int i1 = r.nextInt(-60-(-70)) + (-70);
-        series2.appendData(new DataPoint(lastX1++,i1),true,10);
-        int lastX2 = lastX1-1;
+        int i1 = r.nextInt(-60 - (-70)) + (-70);
+        series2.appendData(new DataPoint(lastX1++,i1 ), true, 10);
+        int lastX2 = lastX1 - 1;
         Random r1 = new Random();
-        int i2 = r1.nextInt(-50-(-60)) + (-60);
-        series3.appendData(new DataPoint(lastX2++,i2),true,10);
+        int i2 = r1.nextInt(-50 - (-60)) + (-60);
+        registerReceiver(receiver, new IntentFilter(BluetoothDevice.ACTION_FOUND));
+        BTAdapter.startDiscovery();
+        series3.appendData(new DataPoint(lastX2++, rssi2), true, 10);
 
-        if (wifiManager.isWifiEnabled() == false)
-        {
+        if (wifiManager.isWifiEnabled() == false) {
             // If wifi disabled then enable it
             Toast.makeText(getApplicationContext(), "wifi is disabled..making it enabled",
                     Toast.LENGTH_LONG).show();
 
             wifiManager.setWifiEnabled(true);
         }
+//        registerReceiver(receiver, new IntentFilter(BluetoothDevice.ACTION_FOUND));
+//        Button button = (Button)findViewById(R.id.bluetoothB);
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                BTAdapter.startDiscovery();
+//            }
+//        });
+
 //         final BroadcastReceiver receiver = new BroadcastReceiver(){
 //            @Override
 //            public void onReceive(Context context, Intent intent) {
@@ -241,7 +270,7 @@ int lastX1 = lastX-1;
                 break;
 
             case R.id.spinner2:
-                h= adapterView.getItemIdAtPosition(i);
+                h = adapterView.getItemIdAtPosition(i);
 //                Toast.makeText(this, "a=" + i, Toast.LENGTH_SHORT).show();
 //                Toast.makeText(this, "b=" + i, Toast.LENGTH_SHORT).show();
                 break;
@@ -270,16 +299,16 @@ int lastX1 = lastX-1;
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
-   public void bWifi(View view) {
+
+    public void bWifi(View view) {
         a = g;
-       b= h;
-       series = series1;
-       setStyle(view);
-   }
-       public void setStyle(View view)
-    {
-        if(a==0 && b==0)
-        {
+        b = h;
+        series = series1;
+        setStyle(view);
+    }
+
+    public void setStyle(View view) {
+        if (a == 0 && b == 0) {
             Paint paint = new Paint();
             paint.setStyle(Paint.Style.STROKE);
             paint.setStrokeWidth(10);
@@ -287,8 +316,7 @@ int lastX1 = lastX-1;
             paint.setPathEffect(new CornerPathEffect(10));
             series.setCustomPaint(paint);
         }
-        if(a==0 && b==1)
-        {
+        if (a == 0 && b == 1) {
             Paint paint = new Paint();
             paint.setStyle(Paint.Style.STROKE);
             paint.setStrokeWidth(10);
@@ -296,8 +324,7 @@ int lastX1 = lastX-1;
             paint.setPathEffect(new DashPathEffect(new float[]{8, 5}, 0));
             series.setCustomPaint(paint);
         }
-        if(a==0 && b==2)
-        {
+        if (a == 0 && b == 2) {
             Paint paint = new Paint();
             paint.setStyle(Paint.Style.STROKE);
             paint.setStrokeWidth(20);
@@ -307,8 +334,7 @@ int lastX1 = lastX-1;
             series.setCustomPaint(paint);
         }
 
-        if(a==1 && b==0)
-        {
+        if (a == 1 && b == 0) {
             Paint paint = new Paint();
             paint.setStyle(Paint.Style.STROKE);
             paint.setStrokeWidth(10);
@@ -316,8 +342,7 @@ int lastX1 = lastX-1;
             paint.setPathEffect(new CornerPathEffect(10));
             series.setCustomPaint(paint);
         }
-        if(a==1 && b==1)
-        {
+        if (a == 1 && b == 1) {
             Paint paint = new Paint();
             paint.setStyle(Paint.Style.STROKE);
             paint.setStrokeWidth(10);
@@ -326,8 +351,7 @@ int lastX1 = lastX-1;
             series.setCustomPaint(paint);
 
         }
-        if(a==1 && b==2)
-        {
+        if (a == 1 && b == 2) {
             Paint paint = new Paint();
             paint.setStyle(Paint.Style.STROKE);
             paint.setStrokeWidth(20);
@@ -336,8 +360,7 @@ int lastX1 = lastX-1;
             series.setCustomPaint(paint);
 
         }
-        if(a==2 && b==0)
-        {
+        if (a == 2 && b == 0) {
             Paint paint = new Paint();
             paint.setStyle(Paint.Style.STROKE);
             paint.setStrokeWidth(10);
@@ -346,8 +369,7 @@ int lastX1 = lastX-1;
             series.setCustomPaint(paint);
 
         }
-        if(a==2 && b==1)
-        {
+        if (a == 2 && b == 1) {
             Paint paint = new Paint();
             paint.setStyle(Paint.Style.STROKE);
             paint.setStrokeWidth(10);
@@ -356,8 +378,7 @@ int lastX1 = lastX-1;
             series.setCustomPaint(paint);
 
         }
-        if(a==2 && b==2)
-        {
+        if (a == 2 && b == 2) {
             Paint paint = new Paint();
             paint.setStyle(Paint.Style.STROKE);
             paint.setStrokeWidth(20);
@@ -369,19 +390,20 @@ int lastX1 = lastX-1;
 
     }
 
-    public void bUSB(View view){
+    public void bUSB(View view) {
         series = series2;
-        a=c;
-        b=d;
+        a = c;
+        b = d;
 //Toast.makeText(this,"c = "+c + "d = "+d, Toast.LENGTH_SHORT).show();
         setStyle(view);
 
 
     }
-    public void bBluetooth(View view){
+
+    public void bBluetooth(View view) {
         series = series3;
-        a=e;
-        b=f;
+        a = e;
+        b = f;
         setStyle(view);
     }
 }
