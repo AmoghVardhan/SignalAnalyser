@@ -31,6 +31,7 @@ import android.widget.Toast;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GridLabelRenderer;
+import com.jjoe64.graphview.LegendRenderer;
 import com.jjoe64.graphview.Viewport;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
@@ -49,13 +50,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public int lastX = 0;
     public long a, b, c, d, e, f, g, h;
     public int rssi2;
+    String wName;
+    GraphView graph;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 //        creating a graph instance
-        GraphView graph = (GraphView) findViewById(R.id.graph);
+         graph = (GraphView) findViewById(R.id.graph);
 //        data
         series = new LineGraphSeries<>();
         series1 = new LineGraphSeries<>();
@@ -73,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         gridLabel.setNumHorizontalLabels(5);
         gridLabel.setNumVerticalLabels(11);
         series1.setColor(Color.RED);
+
         series2 = new LineGraphSeries<>();
         graph.addSeries(series2);
         series2.setColor(Color.BLUE);
@@ -91,6 +95,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         paint1.setColor(Color.YELLOW);
         paint1.setPathEffect(new CornerPathEffect(10));
         series3.setCustomPaint(paint1);
+        if(BTAdapter.disable()== true){
+            Toast.makeText(this,"Bluetooth is disabled..making it enabled",Toast.LENGTH_SHORT).show();
+            BTAdapter.enable();
+        }
 
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
@@ -204,7 +212,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 //        here we choose a max of 10 points to show up on the Viewport
         WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
         int rssi = wifiManager.getConnectionInfo().getRssi();
-
+        WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+        String wName = wifiInfo.getSSID();
+        series1.setTitle(wName);
+        graph.getLegendRenderer().setVisible(true);
+        graph.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.TOP);
         series1.appendData(new DataPoint(lastX++, rssi), true, 10);
         final BroadcastReceiver receiver = new BroadcastReceiver() {
             @Override
@@ -236,6 +248,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
             wifiManager.setWifiEnabled(true);
         }
+
+
 //        registerReceiver(receiver, new IntentFilter(BluetoothDevice.ACTION_FOUND));
 //        Button button = (Button)findViewById(R.id.bluetoothB);
 //        button.setOnClickListener(new View.OnClickListener() {
