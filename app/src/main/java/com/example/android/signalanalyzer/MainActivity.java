@@ -225,6 +225,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 if(BluetoothDevice.ACTION_FOUND.equals(action));
               int  rsssi2 = intent.getShortExtra(BluetoothDevice.EXTRA_RSSI,Short.MAX_VALUE);
                 rssi2 = rsssi2;
+
 //                String name = intent.getStringExtra(BluetoothDevice.EXTRA_NAME);
 //            TextView rssi_msg = (TextView)findViewById(R.id.textView);
 //            rssi_msg.setText(rssi_msg.getText() + name + "=>" + rsssi2 +"dbm\n");
