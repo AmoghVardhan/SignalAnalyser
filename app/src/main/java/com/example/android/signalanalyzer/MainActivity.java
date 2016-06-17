@@ -17,6 +17,7 @@ import android.graphics.PathEffect;
 import android.hardware.camera2.params.BlackLevelPattern;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.provider.Settings;
 import android.sax.StartElementListener;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -199,11 +200,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//Intent intent = new Intent(this, Personalization.class);
-//            startActivity(intent);
-//            return true;
-//        }
+
+        if (id == R.id.wifi_settings)
+        {
+            startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+        }
+        if (id == R.id.bluetooth_settings)
+        {
+            startActivity(new Intent(Settings.ACTION_BLUETOOTH_SETTINGS));
+        }
 //
         return super.onOptionsItemSelected(item);
     }
