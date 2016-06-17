@@ -7,6 +7,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Configuration;
 import android.graphics.BlurMaskFilter;
 import android.graphics.Color;
 import android.graphics.CornerPathEffect;
@@ -156,6 +157,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -217,6 +219,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         series1.setTitle(wName);
         graph.getLegendRenderer().setVisible(true);
         graph.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.TOP);
+        graph.getLegendRenderer().setWidth(200);
+        graph.getLegendRenderer().setSpacing(15);
+//        graph.getLegendRenderer().
         series1.appendData(new DataPoint(lastX++, rssi), true, 10);
         final BroadcastReceiver receiver = new BroadcastReceiver() {
             @Override
@@ -225,8 +230,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 if(BluetoothDevice.ACTION_FOUND.equals(action));
               int  rsssi2 = intent.getShortExtra(BluetoothDevice.EXTRA_RSSI,Short.MAX_VALUE);
                 rssi2 = rsssi2;
-
-//                String name = intent.getStringExtra(BluetoothDevice.EXTRA_NAME);
+                String name = intent.getStringExtra(BluetoothDevice.EXTRA_NAME);
+                series3.setTitle("\""+name+"\"");
 //            TextView rssi_msg = (TextView)findViewById(R.id.textView);
 //            rssi_msg.setText(rssi_msg.getText() + name + "=>" + rsssi2 +"dbm\n");
             }
