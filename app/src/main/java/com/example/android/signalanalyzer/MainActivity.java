@@ -208,11 +208,22 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         if (id == R.id.bluetooth_settings)
         {
             Intent intent1 = new Intent(this,BluetoothSettingsActivity.class);
-            startActivity(intent1);
+            startActivityForResult(intent1,1);
+
 //            startActivity(new Intent(Settings.ACTION_BLUETOOTH_SETTINGS));
         }
 //
         return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if(resultCode == RESULT_OK){
+                String stredittext=data.getExtras().getString("rssi");
+                Toast.makeText(this,stredittext,Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     //    add random data
