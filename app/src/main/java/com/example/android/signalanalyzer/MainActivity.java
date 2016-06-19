@@ -207,7 +207,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
         if (id == R.id.bluetooth_settings)
         {
-            startActivity(new Intent(Settings.ACTION_BLUETOOTH_SETTINGS));
+            Intent intent1 = new Intent(this,BluetoothSettingsActivity.class);
+            startActivity(intent1);
+//            startActivity(new Intent(Settings.ACTION_BLUETOOTH_SETTINGS));
         }
 //
         return super.onOptionsItemSelected(item);
@@ -247,9 +249,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         series2.appendData(new DataPoint(lastX1++,i1 ), true, 10);
         int lastX2 = lastX1 - 1;
         Random r1 = new Random();
-        int i2 = r1.nextInt(-50 - (-60)) + (-60);
-        registerReceiver(receiver, new IntentFilter(BluetoothDevice.ACTION_FOUND));
+//        int i2 = r1.nextInt(-50 - (-60)) + (-60);
+
         BTAdapter.startDiscovery();
+        registerReceiver(receiver, new IntentFilter(BluetoothDevice.ACTION_FOUND));
         series3.appendData(new DataPoint(lastX2++, rssi2), true, 10);
 
         if (wifiManager.isWifiEnabled() == false) {
