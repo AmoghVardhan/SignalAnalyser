@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public int lastX = 0;
     public long a, b, c, d, e, f, g, h;
     public int rssi2;
+    private int rm;
     String wName;
     String stredittext;
     GraphView graph;
@@ -109,6 +110,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     byte[] readBuf = (byte[]) msg.obj;
 
                     String readMessage = new String(readBuf, 0, msg.arg1);
+                     rm = Integer.parseInt(readMessage);
                     chatArrayAdapter.add(connectedDeviceName + ":  " + readMessage);
                     break;
                 case MESSAGE_DEVICE_NAME:
@@ -426,9 +428,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         BTAdapter.startDiscovery();
         registerReceiver(receiver, new IntentFilter(BluetoothDevice.ACTION_FOUND));
-//        String str = outStringBuffer.toString();
-//        int ri2 =Integer.parseInt(outStringBuffer.toString());
-        series3.appendData(new DataPoint(lastX2++, rssi2), true, 10);
+
+        series3.appendData(new DataPoint(lastX2++, rm), true, 10);
 
 
         if (wifiManager.isWifiEnabled() == false) {
