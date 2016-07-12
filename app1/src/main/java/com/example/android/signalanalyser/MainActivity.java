@@ -38,12 +38,17 @@ import com.jjoe64.graphview.LegendRenderer;
 import com.jjoe64.graphview.Viewport;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+import com.jjoe64.graphview.series.PointsGraphSeries;
 
 import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.IntBuffer;
+import java.util.Calendar;
 import java.util.Random;
 import java.util.UUID;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class MainActivity extends AppCompatActivity  {
     private static final Random RANDOM = new Random();
     private LineGraphSeries<DataPoint> series;
     private LineGraphSeries<DataPoint> series1;
@@ -53,8 +58,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public int lastX = 0;
     public long a, b, c, d, e, f, g, h;
     public int rssi2;
-    private int rm;
+    private int[] rm = new int[100];
     String wName;
+    private int[] me = new int[100];
     String stredittext;
     GraphView graph;
 //    private final static int REQUEST_ENABLE_BT = -1;
@@ -64,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public static final int MESSAGE_WRITE = 3;
     public static final int MESSAGE_DEVICE_NAME = 4;
     public static final int MESSAGE_TOAST = 5;
+    public static final int wifiCode = 6;
 
     public static final String DEVICE_NAME = "device_name";
     public static final String TOAST = "toast";
@@ -72,12 +79,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private static final int REQUEST_CONNECT_DEVICE_INSECURE = 2;
     private static final int REQUEST_ENABLE_BT = 3;
 
-    private String connectedDeviceName = null;
+    private String connectedDeviceName = "none" ;
     private ArrayAdapter<String> chatArrayAdapter;
 
     private StringBuffer outStringBuffer;
     private BluetoothAdapter bluetoothAdapter = null;
     private ChatService chatService = null;
+    private IntBuffer intBuffer;
+    private int[] lm = null;
+    private byte[] readBuf;
+    private int[] array;
+    private int l = 0;
 
     private Handler handler = new Handler(new Handler.Callback() {
 
@@ -107,10 +119,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     chatArrayAdapter.add("Me:  " + writeMessage);
                     break;
                 case MESSAGE_READ:
-                    byte[] readBuf = (byte[]) msg.obj;
+                     readBuf = (byte[]) msg.obj;
+//                    intBuffer = ByteBuffer.wrap(readBuf).order(ByteOrder.BIG_ENDIAN).asIntBuffer();
+//                  array = new int[intBuffer.remaining()];
+//                    intBuffer.get(array);
+//                    lm = intBuffer.array();
+
 
                     String readMessage = new String(readBuf, 0, msg.arg1);
-                     rm = Integer.parseInt(readMessage);
+
+//                     rm[l] = Integer.parseInt(readMessage);
+//                    ++l;
                     chatArrayAdapter.add(connectedDeviceName + ":  " + readMessage);
                     break;
                 case MESSAGE_DEVICE_NAME:
@@ -145,8 +164,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 //        customization of our graph
         Viewport viewport = graph.getViewport();
         viewport.setYAxisBoundsManual(true);
-        viewport.setMinY(-100);
-        viewport.setMaxY(0);
+        viewport.setMinY(0);
+        viewport.setMaxY(10);
         viewport.setScrollable(true);
         viewport.setScalable(true);
         GridLabelRenderer gridLabel = graph.getGridLabelRenderer();
@@ -174,65 +193,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         paint1.setColor(Color.YELLOW);
         paint1.setPathEffect(new CornerPathEffect(10));
         series3.setCustomPaint(paint1);
-        if (!BTAdapter.isEnabled()) {
-            Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivityForResult(enableIntent,REQUEST_ENABLE_BT);
-        }
+//        if (!BTAdapter.isEnabled()) {
+//            Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+//            startActivityForResult(enableIntent,REQUEST_ENABLE_BT);
+//        }
 //        BTAdapter.startDiscovery();
 
 
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
-// Create an ArrayAdapter using the string array and a default spinner layout
-        final ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.color_choice, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
 
-        Spinner spinner2 = (Spinner) findViewById(R.id.spinner2);
-        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
-                R.array.style_choice, android.R.layout.simple_spinner_item);
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner2.setAdapter(adapter2);
-        spinner2.setOnItemSelectedListener(this);
-
-
-        Spinner spinner3 = (Spinner) findViewById(R.id.spinner3);
-        ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this,
-                R.array.color_choice, android.R.layout.simple_spinner_item);
-        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner3.setAdapter(adapter3);
-        spinner3.setSelection(1);
-        spinner3.setOnItemSelectedListener(this);
-
-
-        Spinner spinner4 = (Spinner) findViewById(R.id.spinner4);
-        ArrayAdapter<CharSequence> adapter4 = ArrayAdapter.createFromResource(this,
-                R.array.style_choice, android.R.layout.simple_spinner_item);
-        adapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner4.setAdapter(adapter4);
-        spinner4.setSelection(1);
-        spinner4.setOnItemSelectedListener(this);
-
-
-        Spinner spinner5 = (Spinner) findViewById(R.id.spinner5);
-        ArrayAdapter<CharSequence> adapter5 = ArrayAdapter.createFromResource(this,
-                R.array.color_choice, android.R.layout.simple_spinner_item);
-        adapter5.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner5.setAdapter(adapter5);
-        spinner5.setSelection(2);
-        spinner5.setOnItemSelectedListener(this);
-
-
-        Spinner spinner6 = (Spinner) findViewById(R.id.spinner6);
-        ArrayAdapter<CharSequence> adapter6 = ArrayAdapter.createFromResource(this,
-                R.array.style_choice, android.R.layout.simple_spinner_item);
-        adapter6.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner6.setAdapter(adapter6);
-        spinner6.setSelection(2);
-        spinner6.setOnItemSelectedListener(this);
 
 
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -267,11 +235,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     connectDevice(data, true);
                 }
                 break;
-            case REQUEST_CONNECT_DEVICE_INSECURE:
-                if (resultCode == Activity.RESULT_OK) {
-                    connectDevice(data, false);
-                }
-                break;
+
             case REQUEST_ENABLE_BT:
                 if (resultCode == Activity.RESULT_OK) {
                     setupChat();
@@ -280,6 +244,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                             Toast.LENGTH_SHORT).show();
                     finish();
                 }
+                break;
+            case wifiCode:
+
         }
     }
 
@@ -314,7 +281,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     });
 //                    sleep to slow down the addition of the entries
                     try {
-                        Thread.sleep(2000);
+                        Thread.sleep(1000);
                     } catch (InterruptedException e) {
 
                     }
@@ -334,21 +301,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent serverIntent = null;
         switch (item.getItemId()) {
+            case R.id.Graphconfig:
+                serverIntent = new Intent(this,graphConfigAct.class);
+                startActivity(serverIntent);
+                return true;
             case R.id.wifi_settings:
-                startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+                serverIntent = new Intent(this, wifiSettingsActivity.class);
+                startActivityForResult(serverIntent, wifiCode);
+                return true;
 
             case R.id.secure_connect_scan:
                 serverIntent = new Intent(this, BluetoothSettingsActivity.class);
                 startActivityForResult(serverIntent, REQUEST_CONNECT_DEVICE_SECURE);
                 return true;
-            case R.id.insecure_connect_scan:
-                serverIntent = new Intent(this, BluetoothSettingsActivity.class);
-                startActivityForResult(serverIntent,
-                        REQUEST_CONNECT_DEVICE_INSECURE);
-                return true;
-            case R.id.discoverable:
-                ensureDiscoverable();
-                return true;
+
         }
         return false;
     }
@@ -403,7 +369,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         graph.getLegendRenderer().setWidth(200);
         graph.getLegendRenderer().setSpacing(15);
 //        graph.getLegendRenderer().
-        series1.appendData(new DataPoint(lastX++, rssi), true, 10);
+        Random r0 = new Random();
+        int i0 = r0.nextInt(10 - (0)) + (0);
+        series1.appendData(new DataPoint(lastX++, i0), true, 1000);
         final BroadcastReceiver receiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -413,25 +381,45 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
               int  rsssi2 = intent.getShortExtra(BluetoothDevice.EXTRA_RSSI,Short.MAX_VALUE);
                 rssi2 = rsssi2;
                 String name = intent.getStringExtra(BluetoothDevice.EXTRA_NAME);
-                series3.setTitle("\""+name+"\"");
+
+                series3.setTitle("\""+connectedDeviceName+"\"");
 //            TextView rssi_msg = (TextView)findViewById(R.id.textView);
 //            rssi_msg.setText(rssi_msg.getText() + name + "=>" + rsssi2 +"dbm\n");
             }
         };
         int lastX1 = lastX - 1;
-        Random r = new Random();
-        int i1 = r.nextInt(-60 - (-70)) + (-70);
-        series2.appendData(new DataPoint(lastX1++,i1 ), true, 10);
+//        Random r = new Random();
+//        int i1 = r.nextInt(-60 - (-70)) + (-70);
+        int i1 = i0 + 1;
+        series2.appendData(new DataPoint(lastX1++,i1 ), true, 1000);
         int lastX2 = lastX1 - 1;
         Random r1 = new Random();
 //        int i2 = r1.nextInt(-50 - (-60)) + (-60);
 
         BTAdapter.startDiscovery();
         registerReceiver(receiver, new IntentFilter(BluetoothDevice.ACTION_FOUND));
-
-        series3.appendData(new DataPoint(lastX2++, rm), true, 10);
-
-
+       float lastX3 = (float) lastX2;
+//        for(int i=0;i<8;i++) {
+//if(readBuf!= null) {
+//
+//    series3.appendData(new DataPoint(lastX3+0.1, rm), true, 1000);
+//}
+//else
+//{
+//    series3.appendData(new DataPoint(lastX3+0.1,0),true,1000);
+//
+//}
+//
+//
+//
+////        }
+//        for(int i=0;i<9;i++) {
+//            if (rm != null) {
+                series3.appendData(new DataPoint(lastX3,0), true, 1000);
+//            }
+//            else
+//                series3.appendData(new DataPoint(lastX3 + 0.1, 0),true,1000);
+//        }
         if (wifiManager.isWifiEnabled() == false) {
             // If wifi disabled then enable it
             Toast.makeText(getApplicationContext(), "wifi is disabled..making it enabled",
@@ -492,152 +480,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             chatService.stop();
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
 
-        switch (adapterView.getId()) {
-            case R.id.spinner:
-
-                g = adapterView.getItemIdAtPosition(i);
-
-                break;
-
-            case R.id.spinner2:
-                h = adapterView.getItemIdAtPosition(i);
-//                Toast.makeText(this, "a=" + i, Toast.LENGTH_SHORT).show();
-//                Toast.makeText(this, "b=" + i, Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.spinner3:
-//                Toast.makeText(this,"entered", Toast.LENGTH_SHORT).show();
-                c = adapterView.getItemIdAtPosition(i);
-//                Toast.makeText(this,"c = "+c, Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.spinner4:
-                d = adapterView.getItemIdAtPosition(i);
-//                Toast.makeText(this, "d = "+d, Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.spinner5:
-                e = adapterView.getItemIdAtPosition(i);
-                break;
-            case R.id.spinner6:
-                f = adapterView.getItemIdAtPosition(i);
-                break;
 
 
-        }
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
-    }
-
-    public void bWifi(View view) {
-        a = g;
-        b = h;
-        series = series1;
-        setStyle(view);
-    }
-
-    public void setStyle(View view) {
-        if (a == 0 && b == 0) {
-            Paint paint = new Paint();
-            paint.setStyle(Paint.Style.STROKE);
-            paint.setStrokeWidth(10);
-            paint.setColor(Color.RED);
-            paint.setPathEffect(new CornerPathEffect(10));
-            series.setCustomPaint(paint);
-        }
-        if (a == 0 && b == 1) {
-            Paint paint = new Paint();
-            paint.setStyle(Paint.Style.STROKE);
-            paint.setStrokeWidth(10);
-            paint.setColor(Color.RED);
-            paint.setPathEffect(new DashPathEffect(new float[]{8, 5}, 0));
-            series.setCustomPaint(paint);
-        }
-        if (a == 0 && b == 2) {
-            Paint paint = new Paint();
-            paint.setStyle(Paint.Style.STROKE);
-            paint.setStrokeWidth(20);
-            paint.setColor(Color.RED);
-
-            paint.setPathEffect(new CornerPathEffect(10));
-            series.setCustomPaint(paint);
-        }
-
-        if (a == 1 && b == 0) {
-            Paint paint = new Paint();
-            paint.setStyle(Paint.Style.STROKE);
-            paint.setStrokeWidth(10);
-            paint.setColor(Color.BLUE);
-            paint.setPathEffect(new CornerPathEffect(10));
-            series.setCustomPaint(paint);
-        }
-        if (a == 1 && b == 1) {
-            Paint paint = new Paint();
-            paint.setStyle(Paint.Style.STROKE);
-            paint.setStrokeWidth(10);
-            paint.setColor(Color.BLUE);
-            paint.setPathEffect(new DashPathEffect(new float[]{8, 5}, 0));
-            series.setCustomPaint(paint);
-
-        }
-        if (a == 1 && b == 2) {
-            Paint paint = new Paint();
-            paint.setStyle(Paint.Style.STROKE);
-            paint.setStrokeWidth(20);
-            paint.setColor(Color.BLUE);
-            paint.setPathEffect(new CornerPathEffect(10));
-            series.setCustomPaint(paint);
-
-        }
-        if (a == 2 && b == 0) {
-            Paint paint = new Paint();
-            paint.setStyle(Paint.Style.STROKE);
-            paint.setStrokeWidth(10);
-            paint.setColor(Color.YELLOW);
-            paint.setPathEffect(new CornerPathEffect(10));
-            series.setCustomPaint(paint);
-
-        }
-        if (a == 2 && b == 1) {
-            Paint paint = new Paint();
-            paint.setStyle(Paint.Style.STROKE);
-            paint.setStrokeWidth(10);
-            paint.setColor(Color.YELLOW);
-            paint.setPathEffect(new DashPathEffect(new float[]{8, 5}, 0));
-            series.setCustomPaint(paint);
-
-        }
-        if (a == 2 && b == 2) {
-            Paint paint = new Paint();
-            paint.setStyle(Paint.Style.STROKE);
-            paint.setStrokeWidth(20);
-            paint.setColor(Color.YELLOW);
-            paint.setPathEffect(new CornerPathEffect(10));
-            series.setCustomPaint(paint);
-
-        }
-
-    }
-
-    public void bUSB(View view) {
-        series = series2;
-        a = c;
-        b = d;
-//Toast.makeText(this,"c = "+c + "d = "+d, Toast.LENGTH_SHORT).show();
-        setStyle(view);
 
 
-    }
 
-    public void bBluetooth(View view) {
-        series = series3;
-        a = e;
-        b = f;
-        setStyle(view);
-    }
 }
