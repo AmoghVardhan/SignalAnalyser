@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:fillViewport="true">
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.android.signalanalyser.MainActivity">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+
+        android:layout_gravity="center_horizontal"
+        android:weightSum="1">
+        <!--graph comes here -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="S\ni\ng\nn\na\nl\n\nS\nt\nr\ne\nn\ng\nt\nh\n(db)"
+            android:gravity="center"
+            android:textColor="@android:color/black"/>
+        <com.jjoe64.graphview.GraphView
+            android:layout_width="226dp"
+            android:layout_height="match_parent"
+            android:id="@+id/graph"
+            android:layout_weight="0.80" />
+
+    </LinearLayout>
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal">-->
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:background="@android:color/darker_gray"/>-->
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center_horizontal">-->
+        <!--&lt;!&ndash;here we have the three buttons for now&ndash;&gt;-->
+    <!--<Button-->
+        <!--style="@style/ButtonsTheme.red"-->
+        <!--android:text="WI-FI"-->
+        <!--android:id="@+id/wifiB" />-->
+        <!--<Button-->
+            <!--style="@style/ButtonsTheme.blue"-->
+            <!--android:text="USB"-->
+            <!--android:id="@+id/usbB"/>-->
+        <!--<Button-->
+            <!--style="@style/ButtonsTheme.yellow"-->
+            <!--android:text="Bluetooth"-->
+            <!--android:id="@+id/bluetoothB"/>-->
+
+
+
+    <!--</LinearLayout>-->
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal">-->
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:background="@android:color/darker_gray"/>-->
+    <!--</LinearLayout>-->
+    <!--<LinearLayout-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center_horizontal">-->
+        <!--&lt;!&ndash;here we have the three buttons for now&ndash;&gt;-->
+
+        <!--<Spinner-->
+            <!--style="@style/ButtonsTheme"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/spinner"-->
+            <!--android:textAlignment="center"-->
+            <!--android:layout_weight="1"/>-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="vertical">-->
+            <!--<TextView-->
+                <!--android:layout_width="1dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:background="@android:color/darker_gray"/>-->
+        <!--</LinearLayout>-->
+
+        <!--<Spinner-->
+            <!--style="@style/ButtonsTheme"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/spinner3"-->
+            <!--android:textAlignment="center"-->
+            <!--android:layout_weight="1"/>-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="vertical">-->
+            <!--<TextView-->
+                <!--android:layout_width="1dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:background="@android:color/darker_gray"/>-->
+        <!--</LinearLayout>-->
+        <!--<Spinner-->
+            <!--style="@style/ButtonsTheme"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/spinner5"-->
+            <!--android:textAlignment="center"-->
+            <!--android:layout_weight="1"/>-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="vertical">-->
+            <!--<TextView-->
+                <!--android:layout_width="1dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:background="@android:color/darker_gray"/>-->
+        <!--</LinearLayout>-->
+
+    <!--</LinearLayout>-->
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal">-->
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:background="@android:color/darker_gray"/>-->
+    <!--</LinearLayout>-->
+    <!--<LinearLayout-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center_horizontal">-->
+        <!--&lt;!&ndash;here we have the three buttons for now&ndash;&gt;-->
+        <!--<Spinner-->
+            <!--style="@style/ButtonsTheme"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/spinner2"-->
+            <!--android:textAlignment="center"-->
+            <!--android:layout_weight="1"/>-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="vertical">-->
+            <!--<TextView-->
+                <!--android:layout_width="1dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:background="@android:color/darker_gray"/>-->
+        <!--</LinearLayout>-->
+        <!--<Spinner-->
+            <!--style="@style/ButtonsTheme"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/spinner4"-->
+            <!--android:textAlignment="center"-->
+            <!--android:layout_weight="1"/>-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="vertical">-->
+            <!--<TextView-->
+                <!--android:layout_width="1dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:background="@android:color/darker_gray"/>-->
+        <!--</LinearLayout>-->
+        <!--<Spinner-->
+            <!--style="@style/ButtonsTheme"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/spinner6"-->
+            <!--android:textAlignment="center"-->
+            <!--android:layout_weight="1"/>-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="vertical">-->
+            <!--<TextView-->
+                <!--android:layout_width="1dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:background="@android:color/darker_gray"/>-->
+        <!--</LinearLayout>-->
+    <!--</LinearLayout>-->
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal">-->
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:background="@android:color/darker_gray"/>-->
+    <!--</LinearLayout>-->
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal">-->
+    <!--<Button-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:gravity="center"-->
+        <!--android:text="Done"-->
+        <!--android:onClick="bWifi"/>-->
+        <!--<Button-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:gravity="center"-->
+            <!--android:text="Done"-->
+            <!--android:onClick="bUSB"/>-->
+        <!--<Button-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:gravity="center"-->
+            <!--android:text="Done"-->
+            <!--android:onClick="bBluetooth"/>-->
+    <!--</LinearLayout>-->
+</LinearLayout>
+</ScrollView>
