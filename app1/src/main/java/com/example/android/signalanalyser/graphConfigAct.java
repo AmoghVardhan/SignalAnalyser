@@ -1,5 +1,6 @@
 package com.example.android.signalanalyser;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.CornerPathEffect;
 import android.graphics.DashPathEffect;
@@ -13,6 +14,7 @@ import android.widget.Spinner;
 
 public class graphConfigAct extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     public long a, b, c, d, e, f, g, h,i1,j,k,l,m,n,o,p,q,r,s,t,u,v;
+    String s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13,s14,s15,s16,s17,s18,s19,s20;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,7 @@ public class graphConfigAct extends AppCompatActivity implements AdapterView.OnI
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner1.setAdapter(adapter);
         spinner1.setOnItemSelectedListener(this);
+
 
         Spinner spinner2 = (Spinner) findViewById(R.id.sp2);
          ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
@@ -181,7 +184,7 @@ public class graphConfigAct extends AppCompatActivity implements AdapterView.OnI
         switch (adapterView.getId()) {
             case R.id.sp1:
 
-                u = adapterView.getItemIdAtPosition(i);
+                s1 = adapterView.getItemAtPosition(i).toString();
 
                 break;
 
@@ -218,7 +221,8 @@ public class graphConfigAct extends AppCompatActivity implements AdapterView.OnI
                 j = adapterView.getItemIdAtPosition(i);
                 break;
             case R.id.sp11:
-                k = adapterView.getItemIdAtPosition(i);
+                s11 = adapterView.getItemAtPosition(i).toString();
+
                 break;
             case R.id.sp12:
                 l = adapterView.getItemIdAtPosition(i);
@@ -249,6 +253,14 @@ public class graphConfigAct extends AppCompatActivity implements AdapterView.OnI
 
         }
 
+    }
+    public void applyBtClick(View view)
+    {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("spinner1",s1);
+        intent.putExtra("spinner11",s11);
+        setResult(RESULT_OK,intent);
+        super.finish();
     }
 //    public void setStyle(View view) {
 //        if (a == 0 && b == 0) {
