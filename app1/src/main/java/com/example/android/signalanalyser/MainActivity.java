@@ -54,6 +54,14 @@ public class MainActivity extends AppCompatActivity  {
     private LineGraphSeries<DataPoint> series1;
     private LineGraphSeries<DataPoint> series2;
     private LineGraphSeries<DataPoint> series3;
+    private LineGraphSeries<DataPoint> series4;
+    private LineGraphSeries<DataPoint> series5;
+    private LineGraphSeries<DataPoint> series6;
+    private LineGraphSeries<DataPoint> series7;
+    private LineGraphSeries<DataPoint> series8;
+    private LineGraphSeries<DataPoint> series9;
+    private LineGraphSeries<DataPoint> series10;
+
     private BluetoothAdapter BTAdapter = BluetoothAdapter.getDefaultAdapter();
     public int lastX = 0;
     public long a, b, c, d, e, f, g, h;
@@ -63,6 +71,7 @@ public class MainActivity extends AppCompatActivity  {
     private int[] me = new int[100];
     String stredittext;
     GraphView graph;
+    String s1,s2;
 //    private final static int REQUEST_ENABLE_BT = -1;
 
     public static final int MESSAGE_STATE_CHANGE = 1;
@@ -72,12 +81,16 @@ public class MainActivity extends AppCompatActivity  {
     public static final int MESSAGE_TOAST = 5;
     public static final int wifiCode = 6;
 
+    Paint paint = new Paint();
+
     public static final String DEVICE_NAME = "device_name";
     public static final String TOAST = "toast";
 
     private static final int REQUEST_CONNECT_DEVICE_SECURE = 1;
     private static final int REQUEST_CONNECT_DEVICE_INSECURE = 2;
     private static final int REQUEST_ENABLE_BT = 3;
+
+    private static final int REQUEST_DATA = 7;
 
     private String connectedDeviceName = "none" ;
     private ArrayAdapter<String> chatArrayAdapter;
@@ -177,11 +190,9 @@ public class MainActivity extends AppCompatActivity  {
 
         series2 = new LineGraphSeries<>();
         graph.addSeries(series2);
-        series2.setColor(Color.BLUE);
-        Paint paint = new Paint();
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(10);
-        paint.setColor(Color.BLUE);
+        series2.setColor(Color.RED);
+        series2.setCustomPaint(paint);
+
         paint.setPathEffect(new DashPathEffect(new float[]{8, 5}, 0));
 //        series.setCustomPaint(paint);
         series2.setCustomPaint(paint);
@@ -193,6 +204,11 @@ public class MainActivity extends AppCompatActivity  {
         paint1.setColor(Color.YELLOW);
         paint1.setPathEffect(new CornerPathEffect(10));
         series3.setCustomPaint(paint1);
+
+        series4 = new LineGraphSeries<>();
+        graph.addSeries(series4);
+
+
 //        if (!BTAdapter.isEnabled()) {
 //            Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
 //            startActivityForResult(enableIntent,REQUEST_ENABLE_BT);
@@ -229,7 +245,25 @@ public class MainActivity extends AppCompatActivity  {
 //    }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode == Activity.RESULT_OK  && requestCode == REQUEST_DATA){
+            if(data.hasExtra("spinner1")) {
+                s1 = data.getExtras().getString("spinner1");
+                if(s1.equals("Blue")==true)
+                {
+                   cBlue();
+                    series1.setCustomPaint(paint);
+                    Toast.makeText(this,"Blue",Toast.LENGTH_SHORT).show();
+
+                }
+
+            }
+
+        }
         switch (requestCode) {
+
+
+
+
             case REQUEST_CONNECT_DEVICE_SECURE:
                 if (resultCode == Activity.RESULT_OK) {
                     connectDevice(data, true);
@@ -245,10 +279,43 @@ public class MainActivity extends AppCompatActivity  {
                     finish();
                 }
                 break;
-            case wifiCode:
+
+                }
 
         }
+
+    private void cBlue() {
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(10);
+        int color = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Blue);
+        paint.setColor(color);
     }
+
+    private void cYellow() {
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(10);
+        int color = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
+        paint.setColor(color);
+    }
+    private void cBlack() {
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(10);
+        int color = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Black);
+        paint.setColor(color);
+    }
+    private void cRed() {
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(10);
+        int color = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Red);
+        paint.setColor(color);
+    }
+
+
+
+
+
+
+
 
     private void connectDevice(Intent data, boolean secure) {
         String address = data.getExtras().getString(
@@ -303,7 +370,7 @@ public class MainActivity extends AppCompatActivity  {
         switch (item.getItemId()) {
             case R.id.Graphconfig:
                 serverIntent = new Intent(this,graphConfigAct.class);
-                startActivity(serverIntent);
+                startActivityForResult(serverIntent,REQUEST_DATA);
                 return true;
             case R.id.wifi_settings:
                 serverIntent = new Intent(this, wifiSettingsActivity.class);
