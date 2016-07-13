@@ -250,17 +250,17 @@ public class MainActivity extends AppCompatActivity  {
             if(data.hasExtra("spinner1")) {
                 s1 = data.getExtras().getString("spinner1");
                 s=s1;
+                series = series1;
                 setPforC();
-                paint1 = paint;
-                series1.setCustomPaint(paint1);
             }
             if(data.hasExtra("spinner11")) {
                 s11 = data.getExtras().getString("spinner11");
                 s=s11;
+                series = series1;
                 setPforS();
-                paint1 = paint;
-                series1.setCustomPaint(paint1);
+
             }
+
 
 
         }
@@ -323,11 +323,11 @@ public class MainActivity extends AppCompatActivity  {
     }
 
     private void cBlue() {
-//        Paint paint = new Paint();
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(10);
         int color = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Blue);
         paint.setColor(color);
+        series.setCustomPaint(paint);
     }
 
     private void cYellow() {
@@ -335,18 +335,21 @@ public class MainActivity extends AppCompatActivity  {
         paint.setStrokeWidth(10);
         int color = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
         paint.setColor(color);
+        series.setCustomPaint(paint);
     }
     private void cRed() {
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(10);
         int color = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Red);
         paint.setColor(color);
+        series.setCustomPaint(paint);
     }
     private void cBlack() {
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(10);
         int color = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Black);
         paint.setColor(color);
+        series.setCustomPaint(paint);
     }
 
 
@@ -355,17 +358,20 @@ public class MainActivity extends AppCompatActivity  {
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(10);
         paint.setPathEffect(new CornerPathEffect(10));
+        series.setCustomPaint(paint);
     }
     private void sDash(){
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(10);
         paint.setPathEffect(new DashPathEffect(new float[]{8, 5}, 0));
+        series.setCustomPaint(paint);
 
     }
     private void sThick(){
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(20);
         paint.setPathEffect(new CornerPathEffect(10));
+        series.setCustomPaint(paint);
     }
 
 
