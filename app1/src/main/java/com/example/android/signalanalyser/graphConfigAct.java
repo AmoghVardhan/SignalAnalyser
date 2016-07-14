@@ -23,6 +23,16 @@ public class graphConfigAct extends AppCompatActivity implements AdapterView.OnI
     public static final String PREFS_NAME = "MyPrefsFile";
     int color = 0xffff00;
     String color1;
+    String color2;
+    String color3;
+    String color4;
+    String color5;
+    String color6;
+    String color7;
+    String color8;
+    String color9;
+    String color10;
+    int flag;
     TextView text1;
 
     @Override
@@ -38,75 +48,75 @@ public class graphConfigAct extends AppCompatActivity implements AdapterView.OnI
 //        spinner1.setOnItemSelectedListener(this);
 
         text1 = (TextView) findViewById(R.id.text1);
-        Spinner spinner2 = (Spinner) findViewById(R.id.sp2);
-         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
-                R.array.color_choice, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner2.setAdapter(adapter2);
-        spinner2.setOnItemSelectedListener(this);
+//        Spinner spinner2 = (Spinner) findViewById(R.id.sp2);
+//         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
+//                R.array.color_choice, android.R.layout.simple_spinner_item);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spinner2.setAdapter(adapter2);
+//        spinner2.setOnItemSelectedListener(this);
 
-        Spinner spinner3 = (Spinner) findViewById(R.id.sp3);
-         ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this,
-                R.array.color_choice, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner3.setAdapter(adapter3);
-        spinner3.setOnItemSelectedListener(this);
+//        Spinner spinner3 = (Spinner) findViewById(R.id.sp3);
+//         ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this,
+//                R.array.color_choice, android.R.layout.simple_spinner_item);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spinner3.setAdapter(adapter3);
+//        spinner3.setOnItemSelectedListener(this);
 
-        Spinner spinner4 = (Spinner) findViewById(R.id.sp4);
-         ArrayAdapter<CharSequence> adapter4 = ArrayAdapter.createFromResource(this,
-                R.array.color_choice, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner4.setAdapter(adapter4);
-        spinner4.setSelection(1);
-        spinner4.setOnItemSelectedListener(this);
-
-        Spinner spinner5 = (Spinner) findViewById(R.id.sp5);
-        ArrayAdapter<CharSequence> adapter5 = ArrayAdapter.createFromResource(this,
-                R.array.color_choice, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner5.setAdapter(adapter5);
-        spinner5.setOnItemSelectedListener(this);
-        spinner5.setSelection(1);
-
-        Spinner spinner6 = (Spinner) findViewById(R.id.sp6);
-        ArrayAdapter<CharSequence> adapter6 = ArrayAdapter.createFromResource(this,
-                R.array.color_choice, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner6.setAdapter(adapter6);
-        spinner6.setOnItemSelectedListener(this);
-        spinner6.setSelection(1);
-
-        Spinner spinner7 = (Spinner) findViewById(R.id.sp7);
-        ArrayAdapter<CharSequence> adapter7 = ArrayAdapter.createFromResource(this,
-                R.array.color_choice, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner7.setAdapter(adapter7);
-        spinner7.setOnItemSelectedListener(this);
-        spinner7.setSelection(2);
-
-        Spinner spinner8 = (Spinner) findViewById(R.id.sp8);
-        ArrayAdapter<CharSequence> adapter8 = ArrayAdapter.createFromResource(this,
-                R.array.color_choice, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner8.setAdapter(adapter8);
-        spinner8.setOnItemSelectedListener(this);
-        spinner8.setSelection(2);
-
-        Spinner spinner9 = (Spinner) findViewById(R.id.sp9);
-        ArrayAdapter<CharSequence> adapter9 = ArrayAdapter.createFromResource(this,
-                R.array.color_choice, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner9.setAdapter(adapter9);
-        spinner9.setOnItemSelectedListener(this);
-        spinner9.setSelection(2);
-
-        Spinner spinner10 = (Spinner) findViewById(R.id.sp10);
-        ArrayAdapter<CharSequence> adapter10 = ArrayAdapter.createFromResource(this,
-                R.array.color_choice, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner10.setAdapter(adapter10);
-        spinner10.setOnItemSelectedListener(this);
-        spinner10.setSelection(3);
+//        Spinner spinner4 = (Spinner) findViewById(R.id.sp4);
+//         ArrayAdapter<CharSequence> adapter4 = ArrayAdapter.createFromResource(this,
+//                R.array.color_choice, android.R.layout.simple_spinner_item);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spinner4.setAdapter(adapter4);
+//        spinner4.setSelection(1);
+//        spinner4.setOnItemSelectedListener(this);
+//
+//        Spinner spinner5 = (Spinner) findViewById(R.id.sp5);
+//        ArrayAdapter<CharSequence> adapter5 = ArrayAdapter.createFromResource(this,
+//                R.array.color_choice, android.R.layout.simple_spinner_item);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spinner5.setAdapter(adapter5);
+//        spinner5.setOnItemSelectedListener(this);
+//        spinner5.setSelection(1);
+//
+//        Spinner spinner6 = (Spinner) findViewById(R.id.sp6);
+//        ArrayAdapter<CharSequence> adapter6 = ArrayAdapter.createFromResource(this,
+//                R.array.color_choice, android.R.layout.simple_spinner_item);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spinner6.setAdapter(adapter6);
+//        spinner6.setOnItemSelectedListener(this);
+//        spinner6.setSelection(1);
+//
+//        Spinner spinner7 = (Spinner) findViewById(R.id.sp7);
+//        ArrayAdapter<CharSequence> adapter7 = ArrayAdapter.createFromResource(this,
+//                R.array.color_choice, android.R.layout.simple_spinner_item);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spinner7.setAdapter(adapter7);
+//        spinner7.setOnItemSelectedListener(this);
+//        spinner7.setSelection(2);
+//
+//        Spinner spinner8 = (Spinner) findViewById(R.id.sp8);
+//        ArrayAdapter<CharSequence> adapter8 = ArrayAdapter.createFromResource(this,
+//                R.array.color_choice, android.R.layout.simple_spinner_item);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spinner8.setAdapter(adapter8);
+//        spinner8.setOnItemSelectedListener(this);
+//        spinner8.setSelection(2);
+//
+//        Spinner spinner9 = (Spinner) findViewById(R.id.sp9);
+//        ArrayAdapter<CharSequence> adapter9 = ArrayAdapter.createFromResource(this,
+//                R.array.color_choice, android.R.layout.simple_spinner_item);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spinner9.setAdapter(adapter9);
+//        spinner9.setOnItemSelectedListener(this);
+//        spinner9.setSelection(2);
+//
+//        Spinner spinner10 = (Spinner) findViewById(R.id.sp10);
+//        ArrayAdapter<CharSequence> adapter10 = ArrayAdapter.createFromResource(this,
+//                R.array.color_choice, android.R.layout.simple_spinner_item);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spinner10.setAdapter(adapter10);
+//        spinner10.setOnItemSelectedListener(this);
+//        spinner10.setSelection(3);
 
         Spinner spinner11 = (Spinner) findViewById(R.id.sp11);
         ArrayAdapter<CharSequence> adapter11 = ArrayAdapter.createFromResource(this,
@@ -187,16 +197,82 @@ public class graphConfigAct extends AppCompatActivity implements AdapterView.OnI
     }
 
     public void bt1C(View view){
+        flag = 1;
+        openDialog(true);
+
+    }
+    public void bt2C(View view){
+        flag = 2;
         openDialog(true);
     }
 
+    public void bt3C(View view){
+        flag = 3;
+        openDialog(true);
+    }
+    public void bt4C(View view){
+        flag = 4;
+        openDialog(true);
+    }
+    public void bt5C(View view){
+        flag = 5;
+        openDialog(true);
+    }
+    public void bt6C(View view){
+        flag = 6;
+        openDialog(true);
+
+    }
+    public void bt7C(View view){
+        flag = 7;
+        openDialog(true);
+    }
+
+    public void bt8C(View view){
+        flag = 8;
+        openDialog(true);
+    }
+    public void bt9C(View view){
+        flag = 9;
+        openDialog(true);
+    }
+    public void bt10C(View view){
+        flag = 10;
+        openDialog(true);
+    }
+
+
     void openDialog(boolean supportsAlpha) {
         AmbilWarnaDialog dialog = new AmbilWarnaDialog(graphConfigAct.this, color, supportsAlpha, new AmbilWarnaDialog.OnAmbilWarnaListener() {
+
             @Override
             public void onOk(AmbilWarnaDialog dialog, int color) {
                 Toast.makeText(getApplicationContext(), "ok", Toast.LENGTH_SHORT).show();
                 graphConfigAct.this.color = color;
-                displayColor();
+
+                switch (flag)
+                {
+                    case 1: displayColor1();
+                        break;
+                    case 2: displayColor2();
+                        break;
+                    case 3: displayColor3();
+                        break;
+                    case 4: displayColor4();
+                        break;
+                    case 5: displayColor5();
+                        break;
+                    case 6: displayColor6();
+                        break;
+                    case 7: displayColor7();
+                        break;
+                    case 8: displayColor8();
+                        break;
+                    case 9: displayColor9();
+                        break;
+                    case 10: displayColor10();
+                        break;
+                }
             }
             @Override
             public void onCancel(AmbilWarnaDialog dialog) {
@@ -205,11 +281,48 @@ public class graphConfigAct extends AppCompatActivity implements AdapterView.OnI
         });
         dialog.show();
     }
-    void displayColor() {
+    void displayColor1() {
         text1.setText(String.format("Current color: 0x%08x", color));
         color1 = String.format("#%06X", (0xFFFFFF & color));
-
+   }
+    void displayColor2() {
+        text1.setText(String.format("Current color: 0x%08x", color));
+        color2 = String.format("#%06X", (0xFFFFFF & color));
     }
+    void displayColor3() {
+        text1.setText(String.format("Current color: 0x%08x", color));
+        color3 = String.format("#%06X", (0xFFFFFF & color));
+    }
+    void displayColor4() {
+        text1.setText(String.format("Current color: 0x%08x", color));
+        color4 = String.format("#%06X", (0xFFFFFF & color));
+    }
+    void displayColor5() {
+        text1.setText(String.format("Current color: 0x%08x", color));
+        color5 = String.format("#%06X", (0xFFFFFF & color));
+    }
+    void displayColor6() {
+        text1.setText(String.format("Current color: 0x%08x", color));
+        color6 = String.format("#%06X", (0xFFFFFF & color));
+    }
+    void displayColor7() {
+        text1.setText(String.format("Current color: 0x%08x", color));
+        color7 = String.format("#%06X", (0xFFFFFF & color));
+    }
+    void displayColor8() {
+        text1.setText(String.format("Current color: 0x%08x", color));
+        color8 = String.format("#%06X", (0xFFFFFF & color));
+    }
+    void displayColor9() {
+        text1.setText(String.format("Current color: 0x%08x", color));
+        color9 = String.format("#%06X", (0xFFFFFF & color));
+    }
+    void displayColor10() {
+        text1.setText(String.format("Current color: 0x%08x", color));
+        color10 = String.format("#%06X", (0xFFFFFF & color));
+    }
+
+
 
 
     @Override
@@ -223,34 +336,34 @@ public class graphConfigAct extends AppCompatActivity implements AdapterView.OnI
 //
 //                break;
 
-            case R.id.sp2:
-                s2 = adapterView.getItemAtPosition(i).toString();
-                break;
-            case R.id.sp3:
-                s3 = adapterView.getItemAtPosition(i).toString();
-                break;
-            case R.id.sp4:
-                s4 = adapterView.getItemAtPosition(i).toString();
-//                Toast.makeText(this, "d = "+d, Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.sp5:
-                s5 = adapterView.getItemAtPosition(i).toString();
-                break;
-            case R.id.sp6:
-                s6 = adapterView.getItemAtPosition(i).toString();
-                break;
-            case R.id.sp7:
-                s7 = adapterView.getItemAtPosition(i).toString();
-                break;
-            case R.id.sp8:
-                s8 = adapterView.getItemAtPosition(i).toString();
-                break;
-            case R.id.sp9:
-                s9 = adapterView.getItemAtPosition(i).toString();
-                break;
-            case R.id.sp10:
-                s10 = adapterView.getItemAtPosition(i).toString();
-                break;
+//            case R.id.sp2:
+//                s2 = adapterView.getItemAtPosition(i).toString();
+//                break;
+//            case R.id.sp3:
+//                s3 = adapterView.getItemAtPosition(i).toString();
+//                break;
+//            case R.id.sp4:
+//                s4 = adapterView.getItemAtPosition(i).toString();
+////                Toast.makeText(this, "d = "+d, Toast.LENGTH_SHORT).show();
+//                break;
+//            case R.id.sp5:
+//                s5 = adapterView.getItemAtPosition(i).toString();
+//                break;
+//            case R.id.sp6:
+//                s6 = adapterView.getItemAtPosition(i).toString();
+//                break;
+//            case R.id.sp7:
+//                s7 = adapterView.getItemAtPosition(i).toString();
+//                break;
+//            case R.id.sp8:
+//                s8 = adapterView.getItemAtPosition(i).toString();
+//                break;
+//            case R.id.sp9:
+//                s9 = adapterView.getItemAtPosition(i).toString();
+//                break;
+//            case R.id.sp10:
+//                s10 = adapterView.getItemAtPosition(i).toString();
+//                break;
             case R.id.sp11:
                 s11= adapterView.getItemAtPosition(i).toString();;
                 break;
@@ -292,6 +405,16 @@ public class graphConfigAct extends AppCompatActivity implements AdapterView.OnI
         Intent intent = new Intent(this, MainActivity.class);
 //        intent.putExtra("spinner1",s1);
         intent.putExtra("color1",color1);
+        intent.putExtra("color2",color2);
+        intent.putExtra("color3",color3);
+        intent.putExtra("color4",color4);
+        intent.putExtra("color5",color5);
+        intent.putExtra("color6",color6);
+        intent.putExtra("color7",color7);
+        intent.putExtra("color8",color8);
+        intent.putExtra("color9",color9);
+        intent.putExtra("color10",color10);
+
 //        intent.putExtra("spinner2",s2);
 //        intent.putExtra("spinner3",s3);
 //        intent.putExtra("spinner4",s4);
