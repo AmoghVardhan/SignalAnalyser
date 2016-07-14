@@ -1,6 +1,7 @@
 package com.example.android.signalanalyser;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.CornerPathEffect;
 import android.graphics.DashPathEffect;
@@ -11,10 +12,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class graphConfigAct extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     public long a, b, c, d, e, f, g, h,i1,j,k,l,m,n,o,p,q,r,s,t,u,v;
     String s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13,s14,s15,s16,s17,s18,s19,s20;
+    public static final String PREFS_NAME = "MyPrefsFile";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -189,64 +193,62 @@ public class graphConfigAct extends AppCompatActivity implements AdapterView.OnI
                 break;
 
             case R.id.sp2:
-                v = adapterView.getItemIdAtPosition(i);
-//                Toast.makeText(this, "a=" + i, Toast.LENGTH_SHORT).show();
-//                Toast.makeText(this, "b=" + i, Toast.LENGTH_SHORT).show();
+                s2 = adapterView.getItemAtPosition(i).toString();
                 break;
             case R.id.sp3:
-//                Toast.makeText(this,"entered", Toast.LENGTH_SHORT).show();
-                c = adapterView.getItemIdAtPosition(i);
-//                Toast.makeText(this,"c = "+c, Toast.LENGTH_SHORT).show();
+                s3 = adapterView.getItemAtPosition(i).toString();
                 break;
             case R.id.sp4:
-                d = adapterView.getItemIdAtPosition(i);
+                s4 = adapterView.getItemAtPosition(i).toString();
 //                Toast.makeText(this, "d = "+d, Toast.LENGTH_SHORT).show();
                 break;
             case R.id.sp5:
-                e = adapterView.getItemIdAtPosition(i);
+                s5 = adapterView.getItemAtPosition(i).toString();
                 break;
             case R.id.sp6:
-                f = adapterView.getItemIdAtPosition(i);
+                s6 = adapterView.getItemAtPosition(i).toString();
                 break;
             case R.id.sp7:
-                g = adapterView.getItemIdAtPosition(i);
+                s7 = adapterView.getItemAtPosition(i).toString();
                 break;
             case R.id.sp8:
-                h = adapterView.getItemIdAtPosition(i);
+                s8 = adapterView.getItemAtPosition(i).toString();
                 break;
             case R.id.sp9:
-                i1 = adapterView.getItemIdAtPosition(i);
+                s9 = adapterView.getItemAtPosition(i).toString();
                 break;
             case R.id.sp10:
-                j = adapterView.getItemIdAtPosition(i);
+                s10 = adapterView.getItemAtPosition(i).toString();
                 break;
             case R.id.sp11:
-                s11 = adapterView.getItemAtPosition(i).toString();
-
+                s11= adapterView.getItemAtPosition(i).toString();;
                 break;
             case R.id.sp12:
-                l = adapterView.getItemIdAtPosition(i);
+                s12= adapterView.getItemAtPosition(i).toString();;
                 break;
             case R.id.sp13:
-                m = adapterView.getItemIdAtPosition(i);
+                s13= adapterView.getItemAtPosition(i).toString();
+                break;
+            case R.id.sp14:
+                s14= adapterView.getItemAtPosition(i).toString();
                 break;
             case R.id.sp15:
-                n = adapterView.getItemIdAtPosition(i);
+                s15= adapterView.getItemAtPosition(i).toString();
                 break;
             case R.id.sp16:
-                o = adapterView.getItemIdAtPosition(i);
+                s16 = adapterView.getItemAtPosition(i).toString();
                 break;
             case R.id.sp17:
-                p = adapterView.getItemIdAtPosition(i);
+                s17= adapterView.getItemAtPosition(i).toString();
                 break;
             case R.id.sp18:
-                q = adapterView.getItemIdAtPosition(i);
+                s18= adapterView.getItemAtPosition(i).toString();
                 break;
             case R.id.sp19:
-                r = adapterView.getItemIdAtPosition(i);
+                s19= adapterView.getItemAtPosition(i).toString();
                 break;
             case R.id.sp20:
-                s = adapterView.getItemIdAtPosition(i);
+                s20 = adapterView.getItemAtPosition(i).toString();
                 break;
 
 
@@ -258,7 +260,25 @@ public class graphConfigAct extends AppCompatActivity implements AdapterView.OnI
     {
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("spinner1",s1);
+        intent.putExtra("spinner2",s2);
+        intent.putExtra("spinner3",s3);
+        intent.putExtra("spinner4",s4);
+        intent.putExtra("spinner5",s5);
+        intent.putExtra("spinner6",s6);
+        intent.putExtra("spinner7",s7);
+        intent.putExtra("spinner8",s8);
+        intent.putExtra("spinner9",s9);
+        intent.putExtra("spinner10",s10);
         intent.putExtra("spinner11",s11);
+        intent.putExtra("spinner12",s12);
+        intent.putExtra("spinner13",s13);
+        intent.putExtra("spinner14",s14);
+        intent.putExtra("spinner15",s15);
+        intent.putExtra("spinner16",s16);
+        intent.putExtra("spinner17",s17);
+        intent.putExtra("spinner18",s18);
+        intent.putExtra("spinner19",s19);
+        intent.putExtra("spinner20",s20);
         setResult(RESULT_OK,intent);
         super.finish();
     }
