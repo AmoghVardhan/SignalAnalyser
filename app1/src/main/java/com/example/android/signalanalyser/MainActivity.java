@@ -54,6 +54,14 @@ public class MainActivity extends AppCompatActivity  {
     private LineGraphSeries<DataPoint> series1;
     private LineGraphSeries<DataPoint> series2;
     private LineGraphSeries<DataPoint> series3;
+    private LineGraphSeries<DataPoint> series4;
+    private LineGraphSeries<DataPoint> series5;
+    private LineGraphSeries<DataPoint> series6;
+    private LineGraphSeries<DataPoint> series7;
+    private LineGraphSeries<DataPoint> series8;
+    private LineGraphSeries<DataPoint> series9;
+    private LineGraphSeries<DataPoint> series10;
+    
     private BluetoothAdapter BTAdapter = BluetoothAdapter.getDefaultAdapter();
     public int lastX = 0;
     public long a, b, c, d, e, f, g, h;
@@ -77,6 +85,24 @@ public class MainActivity extends AppCompatActivity  {
     Paint paint1 = new Paint();
     Paint paint2 = new Paint();
     Paint paint3 = new Paint();
+    Paint paint4 = new Paint();
+    Paint paint5 = new Paint();
+    Paint paint6 = new Paint();
+    Paint paint7 = new Paint();
+    Paint paint8 = new Paint();
+    Paint paint9 = new Paint();
+    Paint paint10 = new Paint();
+    Paint paint11 = new Paint();
+    Paint paint12 = new Paint();
+    Paint paint13 = new Paint();
+    Paint paint14= new Paint();
+    Paint paint15= new Paint();
+    Paint paint16= new Paint();
+    Paint paint17= new Paint();
+    Paint paint18= new Paint();
+    
+    
+    
 
     public static final String DEVICE_NAME = "device_name";
     public static final String TOAST = "toast";
@@ -172,7 +198,7 @@ public class MainActivity extends AppCompatActivity  {
         Viewport viewport = graph.getViewport();
         viewport.setYAxisBoundsManual(true);
         viewport.setMinY(0);
-        viewport.setMaxY(10);
+        viewport.setMaxY(50);
         viewport.setScrollable(true);
         viewport.setScalable(true);
         GridLabelRenderer gridLabel = graph.getGridLabelRenderer();
@@ -185,8 +211,8 @@ public class MainActivity extends AppCompatActivity  {
         graph.addSeries(series1);
         paint1.setStyle(Paint.Style.STROKE);
         paint1.setStrokeWidth(10);
-        int color = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Red);
-        paint1.setColor(color);
+        int color1 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Red);
+        paint1.setColor(color1);
         paint1.setPathEffect(new CornerPathEffect(10));
         series1.setCustomPaint(paint1);
 
@@ -195,8 +221,8 @@ public class MainActivity extends AppCompatActivity  {
         graph.addSeries(series2);
         paint2.setStyle(Paint.Style.STROKE);
         paint2.setStrokeWidth(10);
-        color = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Blue);
-        paint2.setColor(color);
+        int color2 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Blue);
+        paint2.setColor(color2);
         paint2.setPathEffect(new DashPathEffect(new float[]{8, 5}, 0));
         series2.setCustomPaint(paint2);
 
@@ -204,11 +230,74 @@ public class MainActivity extends AppCompatActivity  {
         graph.addSeries(series3);
         paint3.setStyle(Paint.Style.STROKE);
         paint3.setStrokeWidth(20);
-        color = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
-        paint3.setColor(color);
+        int color3 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
+        paint3.setColor(color3);
         paint3.setPathEffect(new CornerPathEffect(10));
         series3.setCustomPaint(paint3);
 
+        series4 = new LineGraphSeries<>();
+        graph.addSeries(series4);
+        paint4.setStyle(Paint.Style.STROKE);
+        paint4.setStrokeWidth(20);
+        int color4 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
+        paint4.setColor(color4);
+        paint4.setPathEffect(new CornerPathEffect(10));
+        series4.setCustomPaint(paint4);
+
+        series5 = new LineGraphSeries<>();
+        graph.addSeries(series5);
+        paint5.setStyle(Paint.Style.STROKE);
+        paint5.setStrokeWidth(20);
+        int color5 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
+        paint5.setColor(color5);
+        paint5.setPathEffect(new CornerPathEffect(10));
+        series5.setCustomPaint(paint5);
+
+        series6 = new LineGraphSeries<>();
+        graph.addSeries(series6);
+        paint6.setStyle(Paint.Style.STROKE);
+        paint6.setStrokeWidth(20);
+        int color6 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
+        paint6.setColor(color6);
+        paint6.setPathEffect(new CornerPathEffect(10));
+        series6.setCustomPaint(paint6);
+
+        series7 = new LineGraphSeries<>();
+        graph.addSeries(series7);
+        paint7.setStyle(Paint.Style.STROKE);
+        paint7.setStrokeWidth(20);
+        int color7 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
+        paint7.setColor(color7);
+        paint7.setPathEffect(new CornerPathEffect(10));
+        series7.setCustomPaint(paint7);
+
+        series8 = new LineGraphSeries<>();
+        graph.addSeries(series8);
+        paint8.setStyle(Paint.Style.STROKE);
+        paint8.setStrokeWidth(20);
+        int color8 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
+        paint8.setColor(color8);
+        paint8.setPathEffect(new CornerPathEffect(10));
+        series8.setCustomPaint(paint8);
+
+        series9 = new LineGraphSeries<>();
+        graph.addSeries(series9);
+        paint9.setStyle(Paint.Style.STROKE);
+        paint9.setStrokeWidth(20);
+        int color9 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
+        paint9.setColor(color9);
+        paint9.setPathEffect(new CornerPathEffect(10));
+        series9.setCustomPaint(paint9);
+
+        series10 = new LineGraphSeries<>();
+        graph.addSeries(series10);
+        paint10.setStyle(Paint.Style.STROKE);
+        paint10.setStrokeWidth(20);
+        int color10 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
+        paint10.setColor(color10);
+        paint10.setPathEffect(new CornerPathEffect(10));
+        series10.setCustomPaint(paint10);
+        
 
 //        if (!BTAdapter.isEnabled()) {
 //            Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
@@ -253,6 +342,62 @@ public class MainActivity extends AppCompatActivity  {
                 series = series1;
                 setPforC();
             }
+
+            if(data.hasExtra("spinner2")) {
+                s1 = data.getExtras().getString("spinner2");
+                s=s1;
+                series = series2;
+                setPforC();
+            }
+            if(data.hasExtra("spinner3")) {
+                s1 = data.getExtras().getString("spinner3");
+                s=s1;
+                series = series3;
+                setPforC();
+            }
+            if(data.hasExtra("spinner4")) {
+                s1 = data.getExtras().getString("spinner4");
+                s=s1;
+                series = series4;
+                setPforC();
+            }
+            if(data.hasExtra("spinner5")) {
+                s1 = data.getExtras().getString("spinner5");
+                s=s1;
+                series = series5;
+                setPforC();
+            }
+            if(data.hasExtra("spinner6")) {
+                s1 = data.getExtras().getString("spinner6");
+                s=s1;
+                series = series6;
+                setPforC();
+            }
+            if(data.hasExtra("spinner7")) {
+                s1 = data.getExtras().getString("spinner7");
+                s=s1;
+                series = series7;
+                setPforC();
+            }
+            if(data.hasExtra("spinner8")) {
+                s1 = data.getExtras().getString("spinner8");
+                s=s1;
+                series = series8;
+                setPforC();
+            }
+            if(data.hasExtra("spinner9")) {
+                s1 = data.getExtras().getString("spinner9");
+                s=s1;
+                series = series9;
+                setPforC();
+            }
+
+            if(data.hasExtra("spinner10")) {
+                s1 = data.getExtras().getString("spinner10");
+                s=s1;
+                series = series10;
+                setPforC();
+            }
             if(data.hasExtra("spinner11")) {
                 s11 = data.getExtras().getString("spinner11");
                 s=s11;
@@ -260,6 +405,70 @@ public class MainActivity extends AppCompatActivity  {
                 setPforS();
 
             }
+            if(data.hasExtra("spinner12")) {
+                s11 = data.getExtras().getString("spinner12");
+                s=s11;
+                series = series2;
+                setPforS();
+
+            }
+            if(data.hasExtra("spinner13")) {
+                s11 = data.getExtras().getString("spinner13");
+                s=s11;
+                series = series3;
+                setPforS();
+
+            }
+            if(data.hasExtra("spinner14")) {
+                s11 = data.getExtras().getString("spinner14");
+                s=s11;
+                series = series4;
+                setPforS();
+
+            }
+            if(data.hasExtra("spinner15")) {
+                s11 = data.getExtras().getString("spinner15");
+                s=s11;
+                series = series5;
+                setPforS();
+
+            }
+            if(data.hasExtra("spinner16")) {
+                s11 = data.getExtras().getString("spinner16");
+                s=s11;
+                series = series6;
+                setPforS();
+
+            }
+            if(data.hasExtra("spinner17")) {
+                s11 = data.getExtras().getString("spinner17");
+                s=s11;
+                series = series7;
+                setPforS();
+
+            }
+            if(data.hasExtra("spinner18")) {
+                s11 = data.getExtras().getString("spinner18");
+                s=s11;
+                series = series8;
+                setPforS();
+
+            }
+            if(data.hasExtra("spinner19")) {
+                s11 = data.getExtras().getString("spinner19");
+                s=s11;
+                series = series9;
+                setPforS();
+
+            }
+            if(data.hasExtra("spinner20")) {
+                s11 = data.getExtras().getString("spinner20");
+                s=s11;
+                series = series10;
+                setPforS();
+
+            }
+
 
 
 
@@ -323,44 +532,50 @@ public class MainActivity extends AppCompatActivity  {
     }
 
     private void cBlue() {
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(10);
+        Paint paint11 = new Paint();
+        paint11.setStyle(Paint.Style.STROKE);
+        paint11.setStrokeWidth(10);
         int color = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Blue);
-        paint.setColor(color);
-        series.setCustomPaint(paint);
+        paint11.setColor(color);
+        series.setCustomPaint(paint11);
     }
 
     private void cYellow() {
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(10);
+        Paint paint12 = new Paint();
+        paint12.setStyle(Paint.Style.STROKE);
+        paint12.setStrokeWidth(10);
         int color = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
-        paint.setColor(color);
-        series.setCustomPaint(paint);
+        paint12.setColor(color);
+        series.setCustomPaint(paint12);
     }
     private void cRed() {
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(10);
+        Paint paint13 = new Paint();
+        paint13.setStyle(Paint.Style.STROKE);
+        paint13.setStrokeWidth(10);
         int color = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Red);
-        paint.setColor(color);
-        series.setCustomPaint(paint);
+        paint13.setColor(color);
+        series.setCustomPaint(paint13);
     }
     private void cBlack() {
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(10);
+        Paint paint14 = new Paint();
+        paint14.setStyle(Paint.Style.STROKE);
+        paint14.setStrokeWidth(10);
         int color = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Black);
-        paint.setColor(color);
-        series.setCustomPaint(paint);
+        paint14.setColor(color);
+        series.setCustomPaint(paint14);
     }
 
 
 
     private void sCont(){
+        Paint paint = new Paint();
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(10);
         paint.setPathEffect(new CornerPathEffect(10));
         series.setCustomPaint(paint);
     }
     private void sDash(){
+        Paint paint = new Paint();
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(10);
         paint.setPathEffect(new DashPathEffect(new float[]{8, 5}, 0));
@@ -368,6 +583,7 @@ public class MainActivity extends AppCompatActivity  {
 
     }
     private void sThick(){
+        Paint paint = new Paint();
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(20);
         paint.setPathEffect(new CornerPathEffect(10));
@@ -517,15 +733,50 @@ public class MainActivity extends AppCompatActivity  {
         int lastX1 = lastX - 1;
 //        Random r = new Random();
 //        int i1 = r.nextInt(-60 - (-70)) + (-70);
-        int i1 = i0 + 1;
+        int i1 = i0 + 2;
         series2.appendData(new DataPoint(lastX1++,i1 ), true, 1000);
-        int lastX2 = lastX1 - 1;
-        Random r1 = new Random();
-//        int i2 = r1.nextInt(-50 - (-60)) + (-60);
+
+//        int lastX2 = lastX1 - 1;
+//        Random r1 = new Random();
+////        int i2 = r1.nextInt(-50 - (-60)) + (-60);
+
+        int lastX3 = lastX1- 1;
+        int i2 = i1 + 2;
+        series3.appendData(new DataPoint(lastX3++,i2),true,1000);
+
+        int lastX4 = lastX3 - 1;
+        int i3 = i2 + 2;
+        series4.appendData(new DataPoint(lastX4++,i3),true,1000);
+
+        int lastX5 = lastX4 - 1;
+        int i4 = i3 + 2;
+        series5.appendData(new DataPoint(lastX5++,i4),true,1000);
+
+        int lastX6 = lastX5 - 1;
+        int i5 = i4 + 2;
+        series6.appendData(new DataPoint(lastX6++,i5),true,1000);
+
+        int lastX7 = lastX6 - 1;
+        int i6 = i5 + 2;
+        series7.appendData(new DataPoint(lastX7++,i6),true,1000);
+
+        int lastX8 = lastX7 - 1;
+        int i7 = i6 + 2;
+        series8.appendData(new DataPoint(lastX8++,i7),true,1000);
+
+        int lastX9 = lastX8 - 1;
+        int i8 = i7 + 2;
+        series9.appendData(new DataPoint(lastX9++,i8),true,1000);
+
+        int lastX10 = lastX9 - 1;
+        int i9 = i8 + 2;
+        series10.appendData(new DataPoint(lastX10++,i9),true,1000);
+
+
 
         BTAdapter.startDiscovery();
         registerReceiver(receiver, new IntentFilter(BluetoothDevice.ACTION_FOUND));
-       float lastX3 = (float) lastX2;
+//       float lastX31 = (float) lastX2;
 //        for(int i=0;i<8;i++) {
 //if(readBuf!= null) {
 //
@@ -542,11 +793,13 @@ public class MainActivity extends AppCompatActivity  {
 ////        }
 //        for(int i=0;i<9;i++) {
 //            if (rm != null) {
-                series3.appendData(new DataPoint(lastX3,0), true, 1000);
+//                series3.appendData(new DataPoint(lastX31,0), true, 1000);
 //            }
 //            else
 //                series3.appendData(new DataPoint(lastX3 + 0.1, 0),true,1000);
 //        }
+
+
         if (wifiManager.isWifiEnabled() == false) {
             // If wifi disabled then enable it
             Toast.makeText(getApplicationContext(), "wifi is disabled..making it enabled",
