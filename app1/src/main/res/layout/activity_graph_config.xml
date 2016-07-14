@@ -237,51 +237,72 @@
             android:layout_weight="1"
             android:onClick="bt1C"/>
 
-        <Spinner
-            android:id="@+id/sp2"
-            android:layout_width="match_parent"
+        <Button
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="1"></Spinner>
-        <Spinner
-            android:id="@+id/sp3"
-            android:layout_width="match_parent"
+            android:text="CHOOSE COLOR"
+            android:id="@+id/btn2"
+            android:layout_weight="1"
+            android:onClick="bt2C"/>
+
+        <Button
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="1"></Spinner>
-        <Spinner
-            android:id="@+id/sp4"
-            android:layout_width="match_parent"
+            android:text="CHOOSE COLOR"
+            android:id="@+id/btn3"
+            android:layout_weight="1"
+            android:onClick="bt3C"/>
+
+        <Button
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="1"></Spinner>
-        <Spinner
-            android:id="@+id/sp5"
-            android:layout_width="match_parent"
+            android:text="CHOOSE COLOR"
+            android:id="@+id/btn4"
+            android:layout_weight="1"
+            android:onClick="bt4C"/>
+        <Button
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="1"></Spinner>
-        <Spinner
-            android:id="@+id/sp6"
-            android:layout_width="match_parent"
+            android:text="CHOOSE COLOR"
+            android:id="@+id/btn5"
+            android:layout_weight="1"
+            android:onClick="bt5C"/>
+        <Button
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="1"></Spinner>
-        <Spinner
-            android:id="@+id/sp7"
-            android:layout_width="match_parent"
+            android:text="CHOOSE COLOR"
+            android:id="@+id/btn6"
+            android:layout_weight="1"
+            android:onClick="bt6C"/>
+        <Button
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="1"></Spinner>
-        <Spinner
-            android:id="@+id/sp8"
-            android:layout_width="match_parent"
+            android:text="CHOOSE COLOR"
+            android:id="@+id/btn7"
+            android:layout_weight="1"
+            android:onClick="bt7C"/>
+        <Button
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="1"></Spinner>
-        <Spinner
-            android:id="@+id/sp9"
-            android:layout_width="match_parent"
+            android:text="CHOOSE COLOR"
+            android:id="@+id/btn8"
+            android:layout_weight="1"
+            android:onClick="bt8C"/>
+        <Button
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="1"></Spinner>
-        <Spinner
-            android:id="@+id/sp10"
-            android:layout_width="match_parent"
+            android:text="CHOOSE COLOR"
+            android:id="@+id/btn9"
+            android:layout_weight="1"
+            android:onClick="bt9C"/>
+        <Button
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="1"></Spinner>
+            android:text="CHOOSE COLOR"
+            android:id="@+id/btn10"
+            android:layout_weight="1"
+            android:onClick="bt10C"/>
+
     </LinearLayout>
     <TextView
         android:layout_width="1dp"
