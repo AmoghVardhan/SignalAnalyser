@@ -12,27 +12,32 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import yuku.ambilwarna.AmbilWarnaDialog;
 
 public class graphConfigAct extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     public long a, b, c, d, e, f, g, h,i1,j,k,l,m,n,o,p,q,r,s,t,u,v;
     String s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13,s14,s15,s16,s17,s18,s19,s20;
     public static final String PREFS_NAME = "MyPrefsFile";
-
+    int color = 0xffff00;
+    String color1;
+    TextView text1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph_config);
 
-        Spinner spinner1 = (Spinner) findViewById(R.id.sp1);
+//        Spinner spinner1 = (Spinner) findViewById(R.id.sp1);
          ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.color_choice, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner1.setAdapter(adapter);
-        spinner1.setOnItemSelectedListener(this);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spinner1.setAdapter(adapter);
+//        spinner1.setOnItemSelectedListener(this);
 
-
+        text1 = (TextView) findViewById(R.id.text1);
         Spinner spinner2 = (Spinner) findViewById(R.id.sp2);
          ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
                 R.array.color_choice, android.R.layout.simple_spinner_item);
@@ -181,16 +186,42 @@ public class graphConfigAct extends AppCompatActivity implements AdapterView.OnI
 
     }
 
+    public void bt1C(View view){
+        openDialog(true);
+    }
+
+    void openDialog(boolean supportsAlpha) {
+        AmbilWarnaDialog dialog = new AmbilWarnaDialog(graphConfigAct.this, color, supportsAlpha, new AmbilWarnaDialog.OnAmbilWarnaListener() {
+            @Override
+            public void onOk(AmbilWarnaDialog dialog, int color) {
+                Toast.makeText(getApplicationContext(), "ok", Toast.LENGTH_SHORT).show();
+                graphConfigAct.this.color = color;
+                displayColor();
+            }
+            @Override
+            public void onCancel(AmbilWarnaDialog dialog) {
+                Toast.makeText(getApplicationContext(), "cancel", Toast.LENGTH_SHORT).show();
+            }
+        });
+        dialog.show();
+    }
+    void displayColor() {
+        text1.setText(String.format("Current color: 0x%08x", color));
+        color1 = String.format("#%06X", (0xFFFFFF & color));
+
+    }
+
+
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
 
         switch (adapterView.getId()) {
-            case R.id.sp1:
-
-                s1 = adapterView.getItemAtPosition(i).toString();
-
-                break;
+//            case R.id.sp1:
+//
+//                s1 = adapterView.getItemAtPosition(i).toString();
+//
+//                break;
 
             case R.id.sp2:
                 s2 = adapterView.getItemAtPosition(i).toString();
@@ -259,26 +290,27 @@ public class graphConfigAct extends AppCompatActivity implements AdapterView.OnI
     public void applyBtClick(View view)
     {
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("spinner1",s1);
-        intent.putExtra("spinner2",s2);
-        intent.putExtra("spinner3",s3);
-        intent.putExtra("spinner4",s4);
-        intent.putExtra("spinner5",s5);
-        intent.putExtra("spinner6",s6);
-        intent.putExtra("spinner7",s7);
-        intent.putExtra("spinner8",s8);
-        intent.putExtra("spinner9",s9);
-        intent.putExtra("spinner10",s10);
-        intent.putExtra("spinner11",s11);
-        intent.putExtra("spinner12",s12);
-        intent.putExtra("spinner13",s13);
-        intent.putExtra("spinner14",s14);
-        intent.putExtra("spinner15",s15);
-        intent.putExtra("spinner16",s16);
-        intent.putExtra("spinner17",s17);
-        intent.putExtra("spinner18",s18);
-        intent.putExtra("spinner19",s19);
-        intent.putExtra("spinner20",s20);
+//        intent.putExtra("spinner1",s1);
+        intent.putExtra("color1",color1);
+//        intent.putExtra("spinner2",s2);
+//        intent.putExtra("spinner3",s3);
+//        intent.putExtra("spinner4",s4);
+//        intent.putExtra("spinner5",s5);
+//        intent.putExtra("spinner6",s6);
+//        intent.putExtra("spinner7",s7);
+//        intent.putExtra("spinner8",s8);
+//        intent.putExtra("spinner9",s9);
+//        intent.putExtra("spinner10",s10);
+//        intent.putExtra("spinner11",s11);
+//        intent.putExtra("spinner12",s12);
+//        intent.putExtra("spinner13",s13);
+//        intent.putExtra("spinner14",s14);
+//        intent.putExtra("spinner15",s15);
+//        intent.putExtra("spinner16",s16);
+//        intent.putExtra("spinner17",s17);
+//        intent.putExtra("spinner18",s18);
+//        intent.putExtra("spinner19",s19);
+//        intent.putExtra("spinner20",s20);
         setResult(RESULT_OK,intent);
         super.finish();
     }
