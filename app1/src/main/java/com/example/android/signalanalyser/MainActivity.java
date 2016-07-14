@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity  {
     public static final int wifiCode = 6;
 
     String abc;
+    String abcd;
 
     Paint paint = new Paint();
     Paint paint1 = new Paint();
@@ -211,6 +212,7 @@ public class MainActivity extends AppCompatActivity  {
 
         series1 = new LineGraphSeries<>();
         graph.addSeries(series1);
+        series1.setColor(Color.BLUE);
 //        paint1.setStyle(Paint.Style.STROKE);
 //        paint1.setStrokeWidth(10);
 //        int color1 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Red);
@@ -221,85 +223,94 @@ public class MainActivity extends AppCompatActivity  {
 
         series2 = new LineGraphSeries<>();
         graph.addSeries(series2);
-        paint2.setStyle(Paint.Style.STROKE);
-        paint2.setStrokeWidth(10);
-        int color2 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Blue);
-        paint2.setColor(color2);
-        paint2.setPathEffect(new DashPathEffect(new float[]{8, 5}, 0));
-        series2.setCustomPaint(paint2);
+        series2.setColor(Color.GREEN);
+//        paint2.setStyle(Paint.Style.STROKE);
+//        paint2.setStrokeWidth(10);
+//        int color2 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Blue);
+//        paint2.setColor(color2);
+//        paint2.setPathEffect(new DashPathEffect(new float[]{8, 5}, 0));
+//        series2.setCustomPaint(paint2);
 
         series3 = new LineGraphSeries<>();
         graph.addSeries(series3);
-        paint3.setStyle(Paint.Style.STROKE);
-        paint3.setStrokeWidth(20);
-        int color3 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
-        paint3.setColor(color3);
-        paint3.setPathEffect(new CornerPathEffect(10));
-        series3.setCustomPaint(paint3);
+        series3.setColor(Color.BLACK);
+//        paint3.setStyle(Paint.Style.STROKE);
+//        paint3.setStrokeWidth(20);
+//        int color3 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
+//        paint3.setColor(color3);
+//        paint3.setPathEffect(new CornerPathEffect(10));
+//        series3.setCustomPaint(paint3);
 
         series4 = new LineGraphSeries<>();
         graph.addSeries(series4);
-        paint4.setStyle(Paint.Style.STROKE);
-        paint4.setStrokeWidth(20);
-        int color4 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
-        paint4.setColor(color4);
-        paint4.setPathEffect(new CornerPathEffect(10));
-        series4.setCustomPaint(paint4);
+        series4.setColor(Color.RED);
+//        paint4.setStyle(Paint.Style.STROKE);
+//        paint4.setStrokeWidth(20);
+//        int color4 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
+//        paint4.setColor(color4);
+//        paint4.setPathEffect(new CornerPathEffect(10));
+//        series4.setCustomPaint(paint4);
 
         series5 = new LineGraphSeries<>();
         graph.addSeries(series5);
-        paint5.setStyle(Paint.Style.STROKE);
-        paint5.setStrokeWidth(20);
-        int color5 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
-        paint5.setColor(color5);
-        paint5.setPathEffect(new CornerPathEffect(10));
-        series5.setCustomPaint(paint5);
+        series5.setColor(Color.WHITE);
+//        paint5.setStyle(Paint.Style.STROKE);
+//        paint5.setStrokeWidth(20);
+//        int color5 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
+//        paint5.setColor(color5);
+//        paint5.setPathEffect(new CornerPathEffect(10));
+//        series5.setCustomPaint(paint5);
 
         series6 = new LineGraphSeries<>();
         graph.addSeries(series6);
-        paint6.setStyle(Paint.Style.STROKE);
-        paint6.setStrokeWidth(20);
-        int color6 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
-        paint6.setColor(color6);
-        paint6.setPathEffect(new CornerPathEffect(10));
-        series6.setCustomPaint(paint6);
+        series6.setColor(Color.CYAN);
+//        paint6.setStyle(Paint.Style.STROKE);
+//        paint6.setStrokeWidth(20);
+//        int color6 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
+//        paint6.setColor(color6);
+//        paint6.setPathEffect(new CornerPathEffect(10));
+//        series6.setCustomPaint(paint6);
 
         series7 = new LineGraphSeries<>();
         graph.addSeries(series7);
-        paint7.setStyle(Paint.Style.STROKE);
-        paint7.setStrokeWidth(20);
-        int color7 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
-        paint7.setColor(color7);
-        paint7.setPathEffect(new CornerPathEffect(10));
-        series7.setCustomPaint(paint7);
+        series7.setColor(Color.GRAY);
+//        paint7.setStyle(Paint.Style.STROKE);
+//        paint7.setStrokeWidth(20);
+//        int color7 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
+//        paint7.setColor(color7);
+//        paint7.setPathEffect(new CornerPathEffect(10));
+//        series7.setCustomPaint(paint7);
 
         series8 = new LineGraphSeries<>();
         graph.addSeries(series8);
-        paint8.setStyle(Paint.Style.STROKE);
-        paint8.setStrokeWidth(20);
-        int color8 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
-        paint8.setColor(color8);
-        paint8.setPathEffect(new CornerPathEffect(10));
-        series8.setCustomPaint(paint8);
+        series8.setColor(Color.MAGENTA);
+//        paint8.setStyle(Paint.Style.STROKE);
+//        paint8.setStrokeWidth(20);
+//        int color8 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
+//        paint8.setColor(color8);
+//        paint8.setPathEffect(new CornerPathEffect(10));
+//        series8.setCustomPaint(paint8);
 
         series9 = new LineGraphSeries<>();
         graph.addSeries(series9);
-        paint9.setStyle(Paint.Style.STROKE);
-        paint9.setStrokeWidth(20);
-        int color9 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
-        paint9.setColor(color9);
-        paint9.setPathEffect(new CornerPathEffect(10));
-        series9.setCustomPaint(paint9);
+        series9.setColor(Color.DKGRAY);
+//        paint9.setStyle(Paint.Style.STROKE);
+//        paint9.setStrokeWidth(20);
+//        int color9 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
+//        paint9.setColor(color9);
+//        paint9.setPathEffect(new CornerPathEffect(10));
+//        series9.setCustomPaint(paint9);
 
         series10 = new LineGraphSeries<>();
         graph.addSeries(series10);
-        paint10.setStyle(Paint.Style.STROKE);
-        paint10.setStrokeWidth(20);
-        int color10 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
-        paint10.setColor(color10);
-        paint10.setPathEffect(new CornerPathEffect(10));
-        series10.setCustomPaint(paint10);
-        
+        series10.setColor(Color.YELLOW);
+//        paint10.setStyle(Paint.Style.STROKE);
+//        paint10.setStrokeWidth(20);
+//        int color10 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
+//        paint10.setColor(color10);
+//        paint10.setPathEffect(new CornerPathEffect(10));
+//        series10.setCustomPaint(paint10);
+
 
 //        if (!BTAdapter.isEnabled()) {
 //            Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
@@ -347,64 +358,110 @@ public class MainActivity extends AppCompatActivity  {
 //            }
             if(data.hasExtra("color1")){
                 abc = data.getExtras().getString("color1");
+                if(abc != null)
                 series1.setColor(Color.parseColor(abc));
             }
-
-            if(data.hasExtra("spinner2")) {
-                s1 = data.getExtras().getString("spinner2");
-                s=s1;
-                series = series2;
-                setPforC();
+            if(data.hasExtra("color2")){
+                abc = data.getExtras().getString("color2");
+                if(abc != null)
+                series2.setColor(Color.parseColor(abc));
             }
-            if(data.hasExtra("spinner3")) {
-                s1 = data.getExtras().getString("spinner3");
-                s=s1;
-                series = series3;
-                setPforC();
+            if(data.hasExtra("color3")){
+                abc = data.getExtras().getString("color3");
+                if(abc != null)
+                    series3.setColor(Color.parseColor(abc));
             }
-            if(data.hasExtra("spinner4")) {
-                s1 = data.getExtras().getString("spinner4");
-                s=s1;
-                series = series4;
-                setPforC();
+            if(data.hasExtra("color4")){
+                abc = data.getExtras().getString("color4");
+                if(abc != null)
+                    series4.setColor(Color.parseColor(abc));
             }
-            if(data.hasExtra("spinner5")) {
-                s1 = data.getExtras().getString("spinner5");
-                s=s1;
-                series = series5;
-                setPforC();
+            if(data.hasExtra("color5")){
+                abc = data.getExtras().getString("color5");
+                if(abc != null)
+                    series5.setColor(Color.parseColor(abc));
             }
-            if(data.hasExtra("spinner6")) {
-                s1 = data.getExtras().getString("spinner6");
-                s=s1;
-                series = series6;
-                setPforC();
+            if(data.hasExtra("color6")){
+                abc = data.getExtras().getString("color6");
+                if(abc != null)
+                    series6.setColor(Color.parseColor(abc));
             }
-            if(data.hasExtra("spinner7")) {
-                s1 = data.getExtras().getString("spinner7");
-                s=s1;
-                series = series7;
-                setPforC();
+            if(data.hasExtra("color7")){
+                abc = data.getExtras().getString("color7");
+                if(abc != null)
+                    series7.setColor(Color.parseColor(abc));
             }
-            if(data.hasExtra("spinner8")) {
-                s1 = data.getExtras().getString("spinner8");
-                s=s1;
-                series = series8;
-                setPforC();
+            if(data.hasExtra("color8")){
+                abc = data.getExtras().getString("color8");
+                if(abc != null)
+                    series8.setColor(Color.parseColor(abc));
             }
-            if(data.hasExtra("spinner9")) {
-                s1 = data.getExtras().getString("spinner9");
-                s=s1;
-                series = series9;
-                setPforC();
+            if(data.hasExtra("color9")){
+                abc = data.getExtras().getString("color9");
+                if(abc != null)
+                    series9.setColor(Color.parseColor(abc));
+            }
+            if(data.hasExtra("color10")){
+                abc = data.getExtras().getString("color10");
+                if(abc != null)
+                    series10.setColor(Color.parseColor(abc));
             }
 
-            if(data.hasExtra("spinner10")) {
-                s1 = data.getExtras().getString("spinner10");
-                s=s1;
-                series = series10;
-                setPforC();
-            }
+//            if(data.hasExtra("spinner2")) {
+//                s1 = data.getExtras().getString("spinner2");
+//                s=s1;
+//                series = series2;
+//                setPforC();
+//            }
+//            if(data.hasExtra("spinner3")) {
+//                s1 = data.getExtras().getString("spinner3");
+//                s=s1;
+//                series = series3;
+//                setPforC();
+//            }
+//            if(data.hasExtra("spinner4")) {
+//                s1 = data.getExtras().getString("spinner4");
+//                s=s1;
+//                series = series4;
+//                setPforC();
+//            }
+//            if(data.hasExtra("spinner5")) {
+//                s1 = data.getExtras().getString("spinner5");
+//                s=s1;
+//                series = series5;
+//                setPforC();
+//            }
+//            if(data.hasExtra("spinner6")) {
+//                s1 = data.getExtras().getString("spinner6");
+//                s=s1;
+//                series = series6;
+//                setPforC();
+//            }
+//            if(data.hasExtra("spinner7")) {
+//                s1 = data.getExtras().getString("spinner7");
+//                s=s1;
+//                series = series7;
+//                setPforC();
+//            }
+//            if(data.hasExtra("spinner8")) {
+//                s1 = data.getExtras().getString("spinner8");
+//                s=s1;
+//                series = series8;
+//                setPforC();
+//            }
+//            if(data.hasExtra("spinner9")) {
+//                s1 = data.getExtras().getString("spinner9");
+//                s=s1;
+//                series = series9;
+//                setPforC();
+//            }
+//
+//            if(data.hasExtra("spinner10")) {
+//                s1 = data.getExtras().getString("spinner10");
+//                s=s1;
+//                series = series10;
+//                setPforC();
+//            }
             if(data.hasExtra("spinner11")) {
                 s11 = data.getExtras().getString("spinner11");
                 s=s11;
