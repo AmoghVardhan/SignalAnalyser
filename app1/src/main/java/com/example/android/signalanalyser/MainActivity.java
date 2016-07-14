@@ -562,27 +562,6 @@ public class MainActivity extends AppCompatActivity  {
 
         }
 
-    private void setPforC(){
-
-        if(s.equals("Blue")==true)
-        {
-            cBlue();
-        }
-        if(s.equals("Yellow")==true)
-        {
-            cYellow();
-        }
-        if(s.equals("Red")==true)
-        {
-            cRed();
-        }
-        if(s.equals("Black")==true)
-        {
-            cBlack();
-        }
-
-    }
-
     private void setPforS(){
         if(s.equals("dashed")==true) {
             sDash();
@@ -595,38 +574,6 @@ public class MainActivity extends AppCompatActivity  {
         }
     }
 
-    private void cBlue() {
-        Paint paint11 = new Paint();
-        paint11.setStyle(Paint.Style.STROKE);
-        paint11.setStrokeWidth(10);
-        int color = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Blue);
-        paint11.setColor(color);
-        series.setCustomPaint(paint11);
-    }
-
-    private void cYellow() {
-        Paint paint12 = new Paint();
-        paint12.setStyle(Paint.Style.STROKE);
-        paint12.setStrokeWidth(10);
-        int color = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
-        paint12.setColor(color);
-        series.setCustomPaint(paint12);
-    }
-    private void cRed() {
-        Paint paint13 = new Paint();
-        paint13.setStyle(Paint.Style.STROKE);
-        paint13.setStrokeWidth(10);
-        int color = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Red);
-        series.setCustomPaint(paint13);
-    }
-    private void cBlack() {
-        Paint paint14 = new Paint();
-        paint14.setStyle(Paint.Style.STROKE);
-        paint14.setStrokeWidth(10);
-        int color = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Black);
-        paint14.setColor(color);
-        series.setCustomPaint(paint14);
-    }
 
 
 
