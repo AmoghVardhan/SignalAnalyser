@@ -81,6 +81,8 @@ public class MainActivity extends AppCompatActivity  {
     public static final int MESSAGE_TOAST = 5;
     public static final int wifiCode = 6;
 
+    String abc;
+
     Paint paint = new Paint();
     Paint paint1 = new Paint();
     Paint paint2 = new Paint();
@@ -209,12 +211,12 @@ public class MainActivity extends AppCompatActivity  {
 
         series1 = new LineGraphSeries<>();
         graph.addSeries(series1);
-        paint1.setStyle(Paint.Style.STROKE);
-        paint1.setStrokeWidth(10);
-        int color1 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Red);
-        paint1.setColor(color1);
-        paint1.setPathEffect(new CornerPathEffect(10));
-        series1.setCustomPaint(paint1);
+//        paint1.setStyle(Paint.Style.STROKE);
+//        paint1.setStrokeWidth(10);
+//        int color1 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Red);
+//        paint1.setColor(color1);
+//        paint1.setPathEffect(new CornerPathEffect(10));
+//        series1.setCustomPaint(paint1);
 
 
         series2 = new LineGraphSeries<>();
@@ -336,11 +338,16 @@ public class MainActivity extends AppCompatActivity  {
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(resultCode == Activity.RESULT_OK  && requestCode == REQUEST_DATA){
-            if(data.hasExtra("spinner1")) {
-                s1 = data.getExtras().getString("spinner1");
-                s=s1;
-                series = series1;
-                setPforC();
+
+//            if(data.hasExtra("spinner1")) {
+//                s1 = data.getExtras().getString("spinner1");
+//                s=s1;
+//                series = series1;
+//                setPforC();
+//            }
+            if(data.hasExtra("color1")){
+                abc = data.getExtras().getString("color1");
+                series1.setColor(Color.parseColor(abc));
             }
 
             if(data.hasExtra("spinner2")) {
@@ -553,7 +560,6 @@ public class MainActivity extends AppCompatActivity  {
         paint13.setStyle(Paint.Style.STROKE);
         paint13.setStrokeWidth(10);
         int color = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Red);
-        paint13.setColor(color);
         series.setCustomPaint(paint13);
     }
     private void cBlack() {
