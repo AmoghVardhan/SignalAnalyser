@@ -20,6 +20,16 @@
                 android:textSize="16sp"
                 android:onClick="applyBtClick"/>
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:id="@+id/text1"/>
+        </LinearLayout>
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -219,12 +229,14 @@
         android:layout_weight="1"
         android:orientation="vertical">
 
-        <Spinner
-            android:id="@+id/sp1"
-            android:layout_width="match_parent"
+        <Button
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
+            android:text="choose color"
+            android:id="@+id/btn1"
             android:layout_weight="1"
-            ></Spinner>
+            android:onClick="bt1C"/>
+
         <Spinner
             android:id="@+id/sp2"
             android:layout_width="match_parent"
