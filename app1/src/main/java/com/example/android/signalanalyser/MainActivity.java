@@ -103,9 +103,9 @@ public class MainActivity extends AppCompatActivity  {
     Paint paint16= new Paint();
     Paint paint17= new Paint();
     Paint paint18= new Paint();
-    
-    
-    
+
+
+
 
     public static final String DEVICE_NAME = "device_name";
     public static final String TOAST = "toast";
@@ -375,6 +375,7 @@ public class MainActivity extends AppCompatActivity  {
                 abc = data.getExtras().getString("color4");
                 if(abc != null)
                     series4.setColor(Color.parseColor(abc));
+
             }
             if(data.hasExtra("color5")){
                 abc = data.getExtras().getString("color5");
@@ -407,66 +408,13 @@ public class MainActivity extends AppCompatActivity  {
                     series10.setColor(Color.parseColor(abc));
             }
 
-//            if(data.hasExtra("spinner2")) {
-//                s1 = data.getExtras().getString("spinner2");
-//                s=s1;
-//                series = series2;
-//                setPforC();
-//            }
-//            if(data.hasExtra("spinner3")) {
-//                s1 = data.getExtras().getString("spinner3");
-//                s=s1;
-//                series = series3;
-//                setPforC();
-//            }
-//            if(data.hasExtra("spinner4")) {
-//                s1 = data.getExtras().getString("spinner4");
-//                s=s1;
-//                series = series4;
-//                setPforC();
-//            }
-//            if(data.hasExtra("spinner5")) {
-//                s1 = data.getExtras().getString("spinner5");
-//                s=s1;
-//                series = series5;
-//                setPforC();
-//            }
-//            if(data.hasExtra("spinner6")) {
-//                s1 = data.getExtras().getString("spinner6");
-//                s=s1;
-//                series = series6;
-//                setPforC();
-//            }
-//            if(data.hasExtra("spinner7")) {
-//                s1 = data.getExtras().getString("spinner7");
-//                s=s1;
-//                series = series7;
-//                setPforC();
-//            }
-//            if(data.hasExtra("spinner8")) {
-//                s1 = data.getExtras().getString("spinner8");
-//                s=s1;
-//                series = series8;
-//                setPforC();
-//            }
-//            if(data.hasExtra("spinner9")) {
-//                s1 = data.getExtras().getString("spinner9");
-//                s=s1;
-//                series = series9;
-//                setPforC();
-//            }
 //
-//            if(data.hasExtra("spinner10")) {
-//                s1 = data.getExtras().getString("spinner10");
-//                s=s1;
-//                series = series10;
-//                setPforC();
-//            }
             if(data.hasExtra("spinner11")) {
                 s11 = data.getExtras().getString("spinner11");
                 s=s11;
                 series = series1;
                 setPforS();
+
 
             }
             if(data.hasExtra("spinner12")) {
@@ -563,45 +511,16 @@ public class MainActivity extends AppCompatActivity  {
         }
 
     private void setPforS(){
-        if(s.equals("dashed")==true) {
-            sDash();
+        if(s.equals("1")==true) {
+            series.setThickness(6);
         }
-        if(s.equals("continuous")==true) {
-            sCont();
+        if(s.equals("2")==true) {
+            series.setThickness(12);
         }
-        if(s.equals("thick")==true) {
-            sThick();
+        if(s.equals("3")==true) {
+            series.setThickness(18);
         }
     }
-
-
-
-
-    private void sCont(){
-        Paint paint = new Paint();
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(10);
-        paint.setPathEffect(new CornerPathEffect(10));
-        series.setCustomPaint(paint);
-    }
-    private void sDash(){
-        Paint paint = new Paint();
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(10);
-        paint.setPathEffect(new DashPathEffect(new float[]{8, 5}, 0));
-        series.setCustomPaint(paint);
-
-    }
-    private void sThick(){
-        Paint paint = new Paint();
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(20);
-        paint.setPathEffect(new CornerPathEffect(10));
-        series.setCustomPaint(paint);
-    }
-
-
-
 
     private void connectDevice(Intent data, boolean secure) {
         String address = data.getExtras().getString(
@@ -784,8 +703,8 @@ public class MainActivity extends AppCompatActivity  {
 
 
 
-        BTAdapter.startDiscovery();
-        registerReceiver(receiver, new IntentFilter(BluetoothDevice.ACTION_FOUND));
+//        BTAdapter.startDiscovery();
+//        registerReceiver(receiver, new IntentFilter(BluetoothDevice.ACTION_FOUND));
 //       float lastX31 = (float) lastX2;
 //        for(int i=0;i<8;i++) {
 //if(readBuf!= null) {
