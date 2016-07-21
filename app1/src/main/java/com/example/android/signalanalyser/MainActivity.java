@@ -40,7 +40,10 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 import com.jjoe64.graphview.series.PointsGraphSeries;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.IntBuffer;
@@ -61,6 +64,21 @@ public class MainActivity extends AppCompatActivity  {
     private LineGraphSeries<DataPoint> series8;
     private LineGraphSeries<DataPoint> series9;
     private LineGraphSeries<DataPoint> series10;
+
+    int j = 1;
+
+    String[] time = new String[15];
+    String[] sig1 = new String[15];
+    String[] sig2 = new String[15];
+    String[] sig3 = new String[15];
+    String[] sig4 = new String[15];
+    String[] sig5 = new String[15];
+    String[] sig6 = new String[15];
+    String[] sig7 = new String[15];
+    String[] sig8 = new String[15];
+    String[] sig9 = new String[15];
+    String[] sig10 = new String[15];
+    String[] sep = new String[15];
     
     private BluetoothAdapter BTAdapter = BluetoothAdapter.getDefaultAdapter();
     public int lastX = 0;
@@ -201,7 +219,7 @@ public class MainActivity extends AppCompatActivity  {
         Viewport viewport = graph.getViewport();
         viewport.setYAxisBoundsManual(true);
         viewport.setMinY(0);
-        viewport.setMaxY(50);
+        viewport.setMaxY(100);
         viewport.setScrollable(true);
         viewport.setScalable(true);
         GridLabelRenderer gridLabel = graph.getGridLabelRenderer();
@@ -210,106 +228,94 @@ public class MainActivity extends AppCompatActivity  {
         gridLabel.setNumHorizontalLabels(5);
         gridLabel.setNumVerticalLabels(11);
 
+        try {
+            StringBuilder buf = new StringBuilder();
+            InputStream json = getAssets().open("first.txt");
+            BufferedReader in =
+                    new BufferedReader(new InputStreamReader(json, "UTF-8"));
+            String strr;
+            String str;
+            int z = 0;
+            while ((strr = in.readLine()) != null) {
+                buf.append(strr);
+                str = buf.toString();
+                sep = str.split("\\s+");
+                time[z] = sep[0];
+                sig1[z] = sep[1];
+                sig2[z] = sep[2];
+                sig3[z] = sep[3];
+                sig4[z] = sep[4];
+                sig5[z] = sep[5];
+                sig6[z] = sep[6];
+                sig7[z] = sep[7];
+                sig8[z] = sep[8];
+                sig9[z] = sep[9];
+                sig10[z] = sep[10];
+                buf.setLength(0);
+                z++;
+
+            }
+
+
+
+
+            in.close();
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+
         series1 = new LineGraphSeries<>();
         graph.addSeries(series1);
         series1.setColor(Color.BLUE);
-//        paint1.setStyle(Paint.Style.STROKE);
-//        paint1.setStrokeWidth(10);
-//        int color1 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Red);
-//        paint1.setColor(color1);
-//        paint1.setPathEffect(new CornerPathEffect(10));
-//        series1.setCustomPaint(paint1);
+        series1.setTitle(sig1[0]);
 
 
         series2 = new LineGraphSeries<>();
         graph.addSeries(series2);
         series2.setColor(Color.GREEN);
-//        paint2.setStyle(Paint.Style.STROKE);
-//        paint2.setStrokeWidth(10);
-//        int color2 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Blue);
-//        paint2.setColor(color2);
-//        paint2.setPathEffect(new DashPathEffect(new float[]{8, 5}, 0));
-//        series2.setCustomPaint(paint2);
+        series2.setTitle(sig2[0]);
 
         series3 = new LineGraphSeries<>();
         graph.addSeries(series3);
         series3.setColor(Color.BLACK);
-//        paint3.setStyle(Paint.Style.STROKE);
-//        paint3.setStrokeWidth(20);
-//        int color3 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
-//        paint3.setColor(color3);
-//        paint3.setPathEffect(new CornerPathEffect(10));
-//        series3.setCustomPaint(paint3);
+        series3.setTitle(sig3[0]);
 
         series4 = new LineGraphSeries<>();
         graph.addSeries(series4);
         series4.setColor(Color.RED);
-//        paint4.setStyle(Paint.Style.STROKE);
-//        paint4.setStrokeWidth(20);
-//        int color4 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
-//        paint4.setColor(color4);
-//        paint4.setPathEffect(new CornerPathEffect(10));
-//        series4.setCustomPaint(paint4);
+        series4.setTitle(sig4[0]);
 
         series5 = new LineGraphSeries<>();
         graph.addSeries(series5);
         series5.setColor(Color.WHITE);
-//        paint5.setStyle(Paint.Style.STROKE);
-//        paint5.setStrokeWidth(20);
-//        int color5 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
-//        paint5.setColor(color5);
-//        paint5.setPathEffect(new CornerPathEffect(10));
-//        series5.setCustomPaint(paint5);
+        series5.setTitle(sig5[0]);
 
         series6 = new LineGraphSeries<>();
         graph.addSeries(series6);
         series6.setColor(Color.CYAN);
-//        paint6.setStyle(Paint.Style.STROKE);
-//        paint6.setStrokeWidth(20);
-//        int color6 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
-//        paint6.setColor(color6);
-//        paint6.setPathEffect(new CornerPathEffect(10));
-//        series6.setCustomPaint(paint6);
+        series6.setTitle(sig6[0]);
 
         series7 = new LineGraphSeries<>();
         graph.addSeries(series7);
         series7.setColor(Color.GRAY);
-//        paint7.setStyle(Paint.Style.STROKE);
-//        paint7.setStrokeWidth(20);
-//        int color7 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
-//        paint7.setColor(color7);
-//        paint7.setPathEffect(new CornerPathEffect(10));
-//        series7.setCustomPaint(paint7);
+        series7.setTitle(sig7[0]);
 
         series8 = new LineGraphSeries<>();
         graph.addSeries(series8);
         series8.setColor(Color.MAGENTA);
-//        paint8.setStyle(Paint.Style.STROKE);
-//        paint8.setStrokeWidth(20);
-//        int color8 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
-//        paint8.setColor(color8);
-//        paint8.setPathEffect(new CornerPathEffect(10));
-//        series8.setCustomPaint(paint8);
+        series8.setTitle(sig8[0]);
 
         series9 = new LineGraphSeries<>();
         graph.addSeries(series9);
         series9.setColor(Color.DKGRAY);
-//        paint9.setStyle(Paint.Style.STROKE);
-//        paint9.setStrokeWidth(20);
-//        int color9 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
-//        paint9.setColor(color9);
-//        paint9.setPathEffect(new CornerPathEffect(10));
-//        series9.setCustomPaint(paint9);
+        series9.setTitle(sig9[0]);
 
         series10 = new LineGraphSeries<>();
         graph.addSeries(series10);
         series10.setColor(Color.YELLOW);
-//        paint10.setStyle(Paint.Style.STROKE);
-//        paint10.setStrokeWidth(20);
-//        int color10 = getApplicationContext().getResources().getColor(com.example.android.signalanalyser.R.color.Yellow);
-//        paint10.setColor(color10);
-//        paint10.setPathEffect(new CornerPathEffect(10));
-//        series10.setCustomPaint(paint10);
+        series10.setTitle(sig10[0]);
 
 
 //        if (!BTAdapter.isEnabled()) {
@@ -333,6 +339,14 @@ public class MainActivity extends AppCompatActivity  {
             finish();
             return;
         }
+
+
+for(int i=0;i<11;i++)
+{
+    addEntry();
+}
+
+
     }
 
 
@@ -540,26 +554,26 @@ public class MainActivity extends AppCompatActivity  {
             }
         }
         // we're going to simulate real time with thread that append data to the graph
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-//we add 100 new entries
-                for (int i = 0; i < 100; i++) {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            addEntry();
-                        }
-                    });
-//                    sleep to slow down the addition of the entries
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-
-                    }
-                }
-            }
-        }).start();
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+////we add 100 new entries
+//                for (int i = 0; i < 100; i++) {
+//                    runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            addEntry();
+//                        }
+//                    });
+////                    sleep to slow down the addition of the entries
+//                    try {
+//                        Thread.sleep(1000);
+//                    } catch (InterruptedException e) {
+//
+//                    }
+//                }
+//            }
+//        }).start();
     }
 
     @Override
@@ -630,103 +644,85 @@ public class MainActivity extends AppCompatActivity  {
     //    add random data
     private void addEntry() {
 
+
 //        here we choose a max of 10 points to show up on the Viewport
         WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
         int rssi = wifiManager.getConnectionInfo().getRssi();
         WifiInfo wifiInfo = wifiManager.getConnectionInfo();
         String wName = wifiInfo.getSSID();
-        series1.setTitle(wName);
+//        series1.setTitle(wName);
         graph.getLegendRenderer().setVisible(true);
         graph.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.TOP);
-        graph.getLegendRenderer().setWidth(200);
+//        graph.getLegendRenderer().setWidth(200);
         graph.getLegendRenderer().setSpacing(15);
 //        graph.getLegendRenderer().
         Random r0 = new Random();
-        int i0 = r0.nextInt(10 - (0)) + (0);
-        series1.appendData(new DataPoint(lastX++, i0), true, 1000);
-        final BroadcastReceiver receiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                String action = intent.getAction();
-
-                if(BluetoothDevice.ACTION_FOUND.equals(stredittext));
-              int  rsssi2 = intent.getShortExtra(BluetoothDevice.EXTRA_RSSI,Short.MAX_VALUE);
-                rssi2 = rsssi2;
-                String name = intent.getStringExtra(BluetoothDevice.EXTRA_NAME);
-
-                series3.setTitle("\""+connectedDeviceName+"\"");
-//            TextView rssi_msg = (TextView)findViewById(R.id.textView);
-//            rssi_msg.setText(rssi_msg.getText() + name + "=>" + rsssi2 +"dbm\n");
-            }
-        };
+        //int i0 = r0.nextInt(10 - (0)) + (0);
+        int i0=Integer.parseInt(sig1[j]);
+        series1.appendData(new DataPoint(lastX++,i0 ), true, 1000);
         int lastX1 = lastX - 1;
-//        Random r = new Random();
-//        int i1 = r.nextInt(-60 - (-70)) + (-70);
-        int i1 = i0 + 2;
+
+        int i1=Integer.parseInt(sig2[j]);
+
         series2.appendData(new DataPoint(lastX1++,i1 ), true, 1000);
 
-//        int lastX2 = lastX1 - 1;
-//        Random r1 = new Random();
-////        int i2 = r1.nextInt(-50 - (-60)) + (-60);
+
 
         int lastX3 = lastX1- 1;
-        int i2 = i1 + 2;
+        //int i2 = i1 + 2;
+        int i2=Integer.parseInt(sig3[j]);
         series3.appendData(new DataPoint(lastX3++,i2),true,1000);
 
         int lastX4 = lastX3 - 1;
-        int i3 = i2 + 2;
+        int i3 = Integer.parseInt(sig4[j]);
         series4.appendData(new DataPoint(lastX4++,i3),true,1000);
 
         int lastX5 = lastX4 - 1;
-        int i4 = i3 + 2;
+        int i4 = Integer.parseInt(sig5[j]);
         series5.appendData(new DataPoint(lastX5++,i4),true,1000);
 
         int lastX6 = lastX5 - 1;
-        int i5 = i4 + 2;
+        int i5 = Integer.parseInt(sig6[j]);
         series6.appendData(new DataPoint(lastX6++,i5),true,1000);
 
         int lastX7 = lastX6 - 1;
-        int i6 = i5 + 2;
+        int i6 = Integer.parseInt(sig7[j]);
         series7.appendData(new DataPoint(lastX7++,i6),true,1000);
 
         int lastX8 = lastX7 - 1;
-        int i7 = i6 + 2;
+        int i7 = Integer.parseInt(sig8[j]);
         series8.appendData(new DataPoint(lastX8++,i7),true,1000);
 
         int lastX9 = lastX8 - 1;
-        int i8 = i7 + 2;
+        int i8 = Integer.parseInt(sig9[j]);
         series9.appendData(new DataPoint(lastX9++,i8),true,1000);
 
         int lastX10 = lastX9 - 1;
-        int i9 = i8 + 2;
+        int i9 = Integer.parseInt(sig10[j]);
         series10.appendData(new DataPoint(lastX10++,i9),true,1000);
 
+//        Toast.makeText(this,String.valueOf(sig1[1]),Toast.LENGTH_SHORT).show();
+//
+//                series1.appendData(new DataPoint(lastX++,i0),true,1000);
+//        int lastX1 = lastX - 1;
+//                series2.appendData(new DataPoint(lastX1++,Integer.parseInt(sig2[1])),true,1000);
+//        int lastX2 = lastX1 - 1;
+//                series3.appendData(new DataPoint(lastX2++,Integer.parseInt(sig3[1])),true,1000);
+//        int lastX3 = lastX2 - 1;
+//                series4.appendData(new DataPoint(lastX3++,Integer.parseInt(sig4[1])),true,1000);
+//                series5.appendData(new DataPoint(Integer.parseInt(time[j]),Integer.parseInt(sig5[j])),true,1000);
+//                series6.appendData(new DataPoint(Integer.parseInt(time[j]),Integer.parseInt(sig6[j])),true,1000);
+//                series7.appendData(new DataPoint(Integer.parseInt(time[j]),Integer.parseInt(sig7[j])),true,1000);
+//                series8.appendData(new DataPoint(Integer.parseInt(time[j]),Integer.parseInt(sig8[j])),true,1000);
+//                series9.appendData(new DataPoint(Integer.parseInt(time[j]),Integer.parseInt(sig9[j])),true,1000);
+//                series10.appendData(new DataPoint(Integer.parseInt(time[j]),Integer.parseInt(sig10[j])),true,1000);
 
 
-//        BTAdapter.startDiscovery();
-//        registerReceiver(receiver, new IntentFilter(BluetoothDevice.ACTION_FOUND));
-//       float lastX31 = (float) lastX2;
-//        for(int i=0;i<8;i++) {
-//if(readBuf!= null) {
-//
-//    series3.appendData(new DataPoint(lastX3+0.1, rm), true, 1000);
-//}
-//else
-//{
-//    series3.appendData(new DataPoint(lastX3+0.1,0),true,1000);
-//
-//}
-//
-//
-//
-////        }
-//        for(int i=0;i<9;i++) {
-//            if (rm != null) {
-//                series3.appendData(new DataPoint(lastX31,0), true, 1000);
-//            }
-//            else
-//                series3.appendData(new DataPoint(lastX3 + 0.1, 0),true,1000);
-//        }
+
+
+
+
+
 
 
         if (wifiManager.isWifiEnabled() == false) {
@@ -736,28 +732,10 @@ public class MainActivity extends AppCompatActivity  {
 
             wifiManager.setWifiEnabled(true);
         }
-
-
-//        registerReceiver(receiver, new IntentFilter(BluetoothDevice.ACTION_FOUND));
-//        Button button = (Button)findViewById(R.id.bluetoothB);
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                BTAdapter.startDiscovery();
-//            }
-//        });
-
-//         final BroadcastReceiver receiver = new BroadcastReceiver(){
-//            @Override
-//            public void onReceive(Context context, Intent intent) {
-//
-//                String action = intent.getAction();
-//                if(BluetoothDevice.ACTION_FOUND.equals(action)) {
-//                    int  rssi = intent.getShortExtra(BluetoothDevice.EXTRA_RSSI,Short.MIN_VALUE);
-//                    Toast.makeText(getApplicationContext(),"  RSSI: " + rssi + "dBm", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        };
+if(j<10)
+j++;
+        else
+    j=1;
     }
     @Override
     public void onStart() {
