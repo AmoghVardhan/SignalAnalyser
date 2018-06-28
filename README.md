@@ -16,3 +16,10 @@ A customized graph plotting engine
 <li>Wifi and bluetooth connectivity options are given. Furthur customization of code can enable to plot data based on values received over bluetooth or wifi</li
 </ul>
 
+<img src="1.jpeg" height="300" width="300" >
+<img src="2.jpeg" height="300" width="300" >
+<img src="3.jpeg" height="300" width="300" >
+<img src="4.jpeg" height="300" width="300" >
+<img src="5.jpeg" height="300" width="300" >
+<img src="6.jpeg" height="300" width="300" >
+<img src="7.jpeg" height="300" width="300" >
